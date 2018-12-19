@@ -1,0 +1,15 @@
+<div #host>
+  <div><ng-content></ng-content></div>
+  <div react-rendering-template="onRenderFooter">
+    <ng-container [ngTemplateOutlet]="onRenderFooter"></ng-container>
+  </div>
+  <div react-rendering-template="onRenderHeader">
+    <ng-container [ngTemplateOutlet]="onRenderHeader"></ng-container>
+  </div>
+  <div react-rendering-template="onRenderFooterContent">
+    <ng-container [ngTemplateOutlet]="onRenderFooterContent"></ng-container>
+  </div>
+  <div react-rendering-template="onRenderNavigation">
+    <ng-container [ngTemplateOutlet]="onRenderNavigation"></ng-container>
+  </div>
+</div>
