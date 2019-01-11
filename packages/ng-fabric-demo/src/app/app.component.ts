@@ -22,6 +22,26 @@ import { Observable, of } from "rxjs";
 import { delay, map } from "rxjs/operators";
 import { people } from "./PickerExampleData";
 import { IComboBoxOptionClassNames } from "office-ui-fabric-react/lib/components/ComboBox/ComboBox.classNames";
+import { NgForm } from "@angular/forms";
+
+const _datePickerStrings: IDatePickerStrings = {
+  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+
+  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+
+  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+
+  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+
+  goToToday: 'Go to today',
+  prevMonthAriaLabel: 'Go to previous month',
+  nextMonthAriaLabel: 'Go to next month',
+  prevYearAriaLabel: 'Go to previous year',
+  nextYearAriaLabel: 'Go to next year',
+  closeButtonAriaLabel: 'Close date picker'
+};
+
+
 
 @Component({
   selector: "app-root",
@@ -29,6 +49,33 @@ import { IComboBoxOptionClassNames } from "office-ui-fabric-react/lib/components
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
+
+_lower:number = 0;
+_datePicked:Date;
+_name:string;
+
+  _handleSubmitForm(f:NgForm){
+    console.log(f.value);
+  }
+  DropDown1:any;
+  StartDate1:Date;
+
+  showPanel: boolean = false;
+
+  _onClosePanel(): void {
+    this.showPanel = false;
+  };
+
+  private _text="";
+  private _panelType = PanelType;
+
+  _onShowPanel(): void {
+    this.showPanel = true;
+  };
+
+
+  _dayOfWeek: DayOfWeek = DayOfWeek.Monday;
+
   /**
    * The list of components to present in the Nav
    * component

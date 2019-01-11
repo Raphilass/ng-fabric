@@ -17,6 +17,7 @@ import { ICommandBarItemProps, ICommandBarData, IButtonProps } from "office-ui-f
   template: HOST_COMPONENT_TEMPLATE,
   styles: []
 })
+@ReactComponentType(CommandBar)
 export class CommandBarComponent extends FabricComponent {
   /**
    * Items to render. ICommandBarItemProps extend IContextualMenuItem

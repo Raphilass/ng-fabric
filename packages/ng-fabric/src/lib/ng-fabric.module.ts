@@ -31,7 +31,10 @@ import { TEXTFIELD_RENDERING_DIRECTIVES } from "./text-field/text-field-directiv
 import { CHECKBOX_RENDERING_DIRECTIVES } from "./checkbox/check-box-directives";
 import { BREADCRUMB_RENDERING_DIRECTIVES } from "./breadcrumb/breadcrumb-directives";
 import { DropdownComponent } from "./dropdown/dropdown.component";
-
+import { DropdownComponent } from './dropdown/dropdown.component';
+import { SearchboxComponent } from './searchbox/searchbox.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import { SliderComponent } from './slider/slider.component';
 @NgModule({
   declarations: [
     IconComponent,
@@ -81,12 +84,10 @@ import { DropdownComponent } from "./dropdown/dropdown.component";
     CheckboxComponent,
     ChoiceGroupComponent,
     ComboBoxComponent,
-    DropdownComponent,
-    PANEL_RENDERING_DIRECTIVES,
-    TEXTFIELD_RENDERING_DIRECTIVES,
-    BUTTON_RENDERING_DIRECTIVES,
-    CHECKBOX_RENDERING_DIRECTIVES,
-    BREADCRUMB_RENDERING_DIRECTIVES
+==== BASE ====
+    PanelHeaderDirective
+==== BASE ====
+>>>>>>> C:\Users\ESWAR~1.PRA\AppData\Local\Temp\meld-tmp-Remote8zadle47
   ]
 })
 export class NgFabricModule {}
