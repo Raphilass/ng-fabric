@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 import { HOST_COMPONENT_TEMPLATE } from "../host-component-template";
 import { FabricComponent } from "../fabric-component";
-import { ReactComponentProp } from "../../lib/imports";
-import { ICommandBarItemProps, ICommandBarData, IButtonProps } from "office-ui-fabric-react";
+import { ReactComponentProp, ReactComponentType } from "../../lib/imports";
+import { ICommandBarItemProps, ICommandBarData, IButtonProps, CommandBar } from "office-ui-fabric-react";
 
 /**
  * CommandBar is a surface that houses commands that operate on the content of the window, panel,
@@ -17,6 +17,7 @@ import { ICommandBarItemProps, ICommandBarData, IButtonProps } from "office-ui-f
   template: HOST_COMPONENT_TEMPLATE,
   styles: []
 })
+@ReactComponentType(CommandBar)
 export class CommandBarComponent extends FabricComponent {
   /**
    * Items to render. ICommandBarItemProps extend IContextualMenuItem
