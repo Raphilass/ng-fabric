@@ -14,22 +14,23 @@
         <fabric-searchbox placeholder="Search by Title" [underlined]="true" ariaLabel="Search control"></fabric-searchbox>
 
         <form #form="ngForm">
-          <fabric-slider label="Lower Conformance Target" [max]='100' [showValue]=true name="Lower" [(ngModel)]="_lower"></fabric-slider>
-          {{_lower}}
-          <div>
+          <!-- <fabric-slider label="Lower Conformance Target" [max]='100' [showValue]=true name="Lower" [(ngModel)]="_lower"></fabric-slider>
+          {{_lower}} -->
+          <!-- <div>
             <fabric-date-picker [firstDayOfWeek]="_dayOfWeek" [strings]="_datePickerStrings" placeholder="select a date..."
-              ariaLabel="select a date"></fabric-date-picker>
-          </div>
-
+              ariaLabel="select a date" required [(ngModel)]="_datePicked" name="_datePicked"></fabric-date-picker>
+          </div> -->
+          <fabric-dropdown [options]="_dropDownOptions" label="Team(s)" name="Teams" [(ngModel)]="_teams" [multiSelect]="true"
+          [dropdownWidth]="400"></fabric-dropdown>
 
 
           <div>
-            <fabric-text-field label="enter name" [(ngModel)]="_name" name="_name" required="true"></fabric-text-field>
+            <fabric-text-field #txtbox label="enter name" name="_name"></fabric-text-field>
           </div>
 
           <div>
-            <fabric-primary-button (onClick)="_handleSubmitForm(form)" [(ngModel)]="_datePicked" name="datePicked" text="Submit"
-              style="display: inline-block;margin-right: 15px;" [disabled]="!form.valid" required></fabric-primary-button>
+            <fabric-primary-button (onClick)="_handleSubmitForm()" text="Submit"
+              style="display: inline-block;margin-right: 15px;"></fabric-primary-button>
           </div>
         </form>
 

@@ -45,47 +45,42 @@ export class DropdownComponent extends FabricInputComponent {
 
   @Input()
   @ReactComponentProp()
-  label:string;
+  label: string;
 
   @Input()
   @ReactComponentProp()
-  dropdownWidth:number;
+  dropdownWidth: number;
 
   @Input()
   @ReactComponentProp()
-  keytipProps:IKeytipProps;
+  keytipProps: IKeytipProps;
 
   @Input()
   @ReactComponentProp()
-  multiSelect:boolean;
+  multiSelect: boolean;
 
   @Input()
   @ReactComponentProp()
-  multiSelectDelimiter:string = ",";
+  multiSelectDelimiter: string = ",";
 
   @Input()
   @ReactComponentProp()
-  notifyOnReselect:boolean;
+  notifyOnReselect: boolean;
 
- /**
- * When the input value changes.
- */
+
+  /**
+* When the input value changes.
+*/
   @Output()
-  change: EventEmitter<IComponentEvent> = new EventEmitter();
-
-    /**
- * When the input value changes.
- */
-  @Output()
-  onSelect: EventEmitter<IComponentEvent> = new EventEmitter(); 
+  onSelect: EventEmitter<IComponentEvent> = new EventEmitter();
 
   @Input()
   @ReactComponentProp()
-  responsiveMode:boolean;
+  responsiveMode: boolean;
 
   @Input()
   @ReactComponentProp()
-  theme:ITheme;
+  theme: ITheme;
 
 
   /**
@@ -96,24 +91,55 @@ export class DropdownComponent extends FabricInputComponent {
   @ReactComponentProp()
   value: string;
 
-  
 
+  /**
+   * When the input value changes.
+   */
+  @Output()
+  change: EventEmitter<IComponentEvent> = new EventEmitter();
+
+  private _multiSelectArray: IDropdownOption[] = [];
 
   /**
    * Callback for when the input value changes.
    */
   @ReactComponentProp()
   private onChange = (event, newValue) => {
-    // call writevalue to allow for ngModel
-    // updates
-    this.writeValue(newValue);
-    if (this.change) {
-      this.change.emit({
-        arguments: [newValue]
-      });
-      this.onSelect.emit({
-        arguments: [newValue]
-      });
+
+    if (this.multiSelect) {
+      // update teh array
+      let idx:number = this._multiSelectArray.findIndex(item => item.text == newValue.text);
+      if(idx > -1){
+        // item found in array splice it out
+        this._multiSelectArray.splice(idx,1);
+      } else {
+        this._multiSelectArray.push(newValue)
+      }
+
+      // call write value
+      this.writeValue(this._multiSelectArray);
+      if (this.change) {
+        this.change.emit({
+          arguments: [this._multiSelectArray]
+        });
+        this.onSelect.emit({
+          arguments: [this._multiSelectArray]
+        });
+      }
+
+    } else {
+      // call writevalue to allow for ngModel
+      // updates
+      this.writeValue(newValue);
+      if (this.change) {
+        this.change.emit({
+          arguments: [newValue]
+        });
+        this.onSelect.emit({
+          arguments: [newValue]
+        });
+      }
     }
+
   }
 }
