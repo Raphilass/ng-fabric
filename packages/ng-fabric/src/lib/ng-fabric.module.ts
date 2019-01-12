@@ -25,6 +25,7 @@ import { TextFieldComponent } from "./text-field/text-field.component";
 import { CheckboxComponent } from "./checkbox/checkbox.component";
 import { ChoiceGroupComponent } from "./choice-group/choice-group.component";
 import { ComboBoxComponent } from "./combo-box/combo-box.component";
+import { PanelHeaderDirective } from './panel-header.directive';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ComboBoxComponent } from "./combo-box/combo-box.component";
     TextFieldComponent,
     CheckboxComponent,
     ChoiceGroupComponent,
-    ComboBoxComponent
+    ComboBoxComponent,
+    PanelHeaderDirective
   ],
   imports: [CommonModule],
   exports: [
@@ -70,7 +72,8 @@ import { ComboBoxComponent } from "./combo-box/combo-box.component";
     TextFieldComponent,
     CheckboxComponent,
     ChoiceGroupComponent,
-    ComboBoxComponent
+    ComboBoxComponent,
+    PanelHeaderDirective
   ]
 })
 export class NgFabricModule {}

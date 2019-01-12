@@ -144,7 +144,9 @@ export class TextFieldComponent extends FabricInputComponent {
    * are maintaining its current state; otherwise, use the `defaultValue` property.
    */
   @Input()
-  @ReactComponentProp()
+  @ReactComponentProp({
+    enableExplicitChangeDetection: true
+  })
   value: string;
   /**
    * If true, the text field is readonly.
@@ -242,12 +244,16 @@ export class TextFieldComponent extends FabricInputComponent {
   private onChange = (event, newValue) => {
     // call writevalue to allow for ngModel
     // updates
-    this.writeValue(newValue);
+    this.onViewValueChanged(newValue);
     if (this.change) {
       this.change.emit({
         arguments: [newValue]
       });
     }
+  }
+
+  onModelValueChanged = (val: any) => {
+    this.value = val;
   }
 
   /**

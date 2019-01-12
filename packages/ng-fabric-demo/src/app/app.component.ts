@@ -89,4 +89,8 @@ export class AppComponent {
       ]
     }
   ];
+
+  _text = "Hello";
+  
+  _buttonClick = () => this._text = "Changed";
 }

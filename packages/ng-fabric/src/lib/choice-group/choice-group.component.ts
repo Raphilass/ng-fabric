@@ -41,7 +41,9 @@ export class ChoiceGroupComponent extends FabricInputComponent {
    * state by observing onChange events and passing a new value in when changed.
    */
   @Input()
-  @ReactComponentProp()
+  @ReactComponentProp({
+    enableExplicitChangeDetection: true
+  })
   selectedKey: string | number;
   /**
    * Descriptive label for the choice group.
@@ -62,11 +64,12 @@ export class ChoiceGroupComponent extends FabricInputComponent {
     ev?: React.FormEvent<HTMLElement | HTMLInputElement>,
     option?: IChoiceGroupOption
   ) => {
-    this.writeValue(option);
+    this.onViewValueChanged(option);
     if (this.change) {
       this.change.emit({
         arguments: [option]
       });
     }
   };
+  onModelValueChanged = (val) => this.selectedKey = val;
 }

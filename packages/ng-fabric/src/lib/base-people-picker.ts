@@ -172,7 +172,9 @@ export abstract class BasePeoplePickerComponent extends FabricInputComponent {
    * If this is provided then the picker will act as a controlled component.
    */
   @Input()
-  @ReactComponentProp()
+  @ReactComponentProp({
+    enableExplicitChangeDetection: true
+  })
   selectedItems: Array<IPersonaSharedProps>;
   /**
    * A callback that gets the rest of the results when a user clicks get more results.
@@ -208,11 +210,12 @@ export abstract class BasePeoplePickerComponent extends FabricInputComponent {
   @ReactComponentProp()
   onChange = (items?: Array<IPersonaSharedProps>) => {
     // ensure the form system knows
-    this.writeValue(items);
+    this.onViewValueChanged(items);
     if (this.change) {
       this.change.emit({
         arguments: [items]
       });
     }
   }
+  onModelValueChanged = (val) => this.selectedItems = val;
 }

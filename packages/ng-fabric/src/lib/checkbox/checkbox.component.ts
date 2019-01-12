@@ -23,7 +23,9 @@ export class CheckboxComponent extends FabricInputComponent {
    * level and plan to pass in the correct value based on handling onChange events and re-rendering.
    */
   @Input()
-  @ReactComponentProp()
+  @ReactComponentProp({
+    enableExplicitChangeDetection: true
+  })
   checked: boolean;
   /**
    * Default checked state. Mutually exclusive to "checked". Use this if you want an uncontrolled component, and
@@ -82,11 +84,12 @@ export class CheckboxComponent extends FabricInputComponent {
     ev?: React.FormEvent<HTMLElement | HTMLInputElement>,
     checked?: boolean
   ) => {
-    this.writeValue(checked);
+    this.onViewValueChanged(checked);
     if (this.change) {
       this.change.emit({
         arguments: [checked]
       });
     }
   };
+  onModelValueChanged = (val) => this.checked = val;
 }

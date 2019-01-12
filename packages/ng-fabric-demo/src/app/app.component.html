@@ -5,7 +5,8 @@
         <fabric-nav [groups]="_componentList"></fabric-nav>
       </div>
       <div class="ms-Grid-col ms-sm12 ms-md12 ms-lg10">
-        
+        <fabric-text-field [(ngModel)]="_text"></fabric-text-field>
+        <fabric-primary-button (onClick)="_buttonClick($event)" text="OK"></fabric-primary-button>
       </div>
     </div>
   </div>

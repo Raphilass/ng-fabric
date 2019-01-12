@@ -101,7 +101,9 @@ export class ComboBoxComponent extends FabricInputComponent {
    * Value to show in the input, does not have to map to a combobox option
    */
   @Input()
-  @ReactComponentProp()
+  @ReactComponentProp({
+    enableExplicitChangeDetection: true
+  })
   text: string;
   /**
    * The IconProps to use for the button aspect of the combobox
@@ -191,11 +193,12 @@ export class ComboBoxComponent extends FabricInputComponent {
     index?: number,
     value?: string
   ) => {
-    this.writeValue(option);
+    this.onViewValueChanged(option);
     if (this.change) {
       this.change.emit({
         arguments: [option]
       });
     }
   };
+  onModelValueChanged = (val) => this.text = val;
 }
