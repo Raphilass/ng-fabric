@@ -23,6 +23,7 @@ import { delay, map } from "rxjs/operators";
 import { people } from "./PickerExampleData";
 import { IComboBoxOptionClassNames } from "office-ui-fabric-react/lib/components/ComboBox/ComboBox.classNames";
 import { NgForm } from "@angular/forms";
+import { TextFieldComponent } from "../../../ng-fabric/src/lib/text-field/text-field.component";
 
 const _datePickerStrings: IDatePickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -52,11 +53,16 @@ export class AppComponent {
 
 _lower:number = 0;
 _datePicked:Date;
-_name:string;
+_name:string = "test";
 
   _handleSubmitForm(f:NgForm){
-    console.log(f.value);
+    console.log("changing text")
+    this._txtBox.change.emit();
   }
+
+  @ViewChild("txtbox")
+  private _txtBox:TextFieldComponent
+
   DropDown1:any;
   StartDate1:Date;
 
