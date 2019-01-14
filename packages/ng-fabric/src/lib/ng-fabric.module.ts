@@ -25,14 +25,11 @@ import { TextFieldComponent } from "./text-field/text-field.component";
 import { CheckboxComponent } from "./checkbox/checkbox.component";
 import { ChoiceGroupComponent } from "./choice-group/choice-group.component";
 import { ComboBoxComponent } from "./combo-box/combo-box.component";
-<<<<<<< HEAD
-import { PanelHeaderDirective } from './panel-header.directive';
-=======
+// import { PanelHeaderDirective } from './panel-header.directive';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { SliderComponent } from './slider/slider.component';
->>>>>>> Added Components
 
 @NgModule({
   declarations: [
@@ -56,14 +53,11 @@ import { SliderComponent } from './slider/slider.component';
     CheckboxComponent,
     ChoiceGroupComponent,
     ComboBoxComponent,
-<<<<<<< HEAD
-    PanelHeaderDirective
-=======
+    // PanelHeaderDirective,
     DropdownComponent,
     SearchboxComponent,
     DatePickerComponent,
     SliderComponent
->>>>>>> Added Components
   ],
   imports: [CommonModule],
   exports: [
@@ -87,14 +81,11 @@ import { SliderComponent } from './slider/slider.component';
     CheckboxComponent,
     ChoiceGroupComponent,
     ComboBoxComponent,
-<<<<<<< HEAD
-    PanelHeaderDirective
-=======
+    // PanelHeaderDirective,
     DropdownComponent,
     SearchboxComponent,
     DatePickerComponent,
     SliderComponent
->>>>>>> Added Components
   ]
 })
 export class NgFabricModule {}

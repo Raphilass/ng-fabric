@@ -55,11 +55,11 @@ export class AppComponent {
 
 _lower:number = 0;
 _datePicked:Date;
-_name:string = "test";
+_name:string;
 
   _handleSubmitForm(f:NgForm){
-    console.log("changing text")
-    this._txtBox.change.emit();
+    console.log("changing text");
+    this._name = "I have changed"
   }
 
   @ViewChild("txtbox")
@@ -148,155 +148,5 @@ _name:string = "test";
     }
   ];
 
-<<<<<<< HEAD
-  _text = "Hello";
-  
   _buttonClick = () => this._text = "Changed";
-=======
-  _dropDownOptions: Array<IDropdownOption> = [
-    { key: 1, text: "Monday" },
-    { key: 2, text: "Tuesday" },
-    { key: 3, text: "Wednesday" },
-    { key: 4, text: "Thursday" },
-    { key: 5, text: "Friday" },
-    { key: 6, text: "Saturday" },
-    { key: 7, text: "Sunday" }
-  ]
-
-  _comboDownOptions: Array<IComboBoxOption> = [
-    { key: 1, text: "Monday" },
-    { key: 2, text: "Tuesday" },
-    { key: 3, text: "Wednesday" },
-    { key: 4, text: "Thursday" },
-    { key: 5, text: "Friday" },
-    { key: 6, text: "Saturday" },
-    { key: 7, text: "Sunday" }
-  ]
-
-  handleOnFocus() {
-    console.log("On Focus")
-  }
-
-  handleOnBlur() {
-    console.log("On Blur")
-  }
-
-   getItems() {
-    return [
-      {
-        key: 'newItem',
-        name: 'New',
-        cacheKey: 'myCacheKey', // changing this key will invalidate this items cache
-        iconProps: {
-          iconName: 'Add'
-        },
-        ariaLabel: 'New. Use left and right arrow keys to navigate',
-        subMenuProps: {
-          items: [
-            {
-              key: 'emailMessage',
-              name: 'Email message',
-              iconProps: {
-                iconName: 'Mail'
-              },
-              ['data-automation-id']: 'newEmailButton'
-            },
-            {
-              key: 'calendarEvent',
-              name: 'Calendar event',
-              iconProps: {
-                iconName: 'Calendar'
-              }
-            }
-          ]
-        }
-      },
-      {
-        key: 'upload',
-        name: 'Upload',
-        iconProps: {
-          iconName: 'Upload'
-        },
-        href: 'https://dev.office.com/fabric',
-        ['data-automation-id']: 'uploadButton'
-      },
-      {
-        key: 'share',
-        name: 'Share',
-        iconProps: {
-          iconName: 'Share'
-        },
-        onClick: () => console.log('Share')
-      },
-      {
-        key: 'download',
-        name: 'Download',
-        iconProps: {
-          iconName: 'Download'
-        },
-        onClick: () => console.log('Download')
-      }
-    ];
-  };
-
-   getOverflowItems()  {
-    return [
-      {
-        key: 'move',
-        name: 'Move to...',
-        onClick: () => console.log('Move to'),
-        iconProps: {
-          iconName: 'MoveToFolder'
-        }
-      },
-      {
-        key: 'copy',
-        name: 'Copy to...',
-        onClick: () => console.log('Copy to'),
-        iconProps: {
-          iconName: 'Copy'
-        }
-      },
-      {
-        key: 'rename',
-        name: 'Rename...',
-        onClick: () => console.log('Rename'),
-        iconProps: {
-          iconName: 'Edit'
-        }
-      }
-    ];
-  };
-
-   getFarItems() {
-    return [
-      {
-        key: 'sort',
-        name: 'Sort',
-        iconProps: {
-          iconName: 'SortLines'
-        },
-        onClick: () => console.log('Sort')
-      },
-      {
-        key: 'tile',
-        name: 'Grid view',
-        iconProps: {
-          iconName: 'Tiles'
-        },
-        iconOnly: true,
-        onClick: () => console.log('Tiles')
-      },
-      {
-        key: 'info',
-        name: 'Info',
-        iconProps: {
-          iconName: 'Info'
-        },
-        iconOnly: true,
-        onClick: () => console.log('Info')
-      }
-    ];
-  };
->>>>>>> Added Components
 }

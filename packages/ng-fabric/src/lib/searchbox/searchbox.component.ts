@@ -99,4 +99,8 @@ export class SearchboxComponent extends FabricInputComponent {
   @ReactComponentProp()
   value: string;
 
+  onModelValueChanged = (val: any) => {
+    this.value = val;
+  }
+  
 }

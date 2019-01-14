@@ -117,7 +117,7 @@ export class DropdownComponent extends FabricInputComponent {
       }
 
       // call write value
-      this.writeValue(this._multiSelectArray);
+      this.onModelValueChanged(this._multiSelectArray);
       if (this.change) {
         this.change.emit({
           arguments: [this._multiSelectArray]
@@ -130,7 +130,7 @@ export class DropdownComponent extends FabricInputComponent {
     } else {
       // call writevalue to allow for ngModel
       // updates
-      this.writeValue(newValue);
+      this.onModelValueChanged(newValue);
       if (this.change) {
         this.change.emit({
           arguments: [newValue]
@@ -142,4 +142,9 @@ export class DropdownComponent extends FabricInputComponent {
     }
 
   }
+
+  onModelValueChanged = (val: any) => {
+    this.value = val;
+  }
+
 }
