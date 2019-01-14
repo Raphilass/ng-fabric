@@ -148,4 +148,9 @@ export class DropdownComponent extends FabricInputComponent {
       this.selectedKey = val as any;
     }
   }
+
+  onModelValueChanged = (val: any) => {
+    this.value = val;
+  }
+
 }

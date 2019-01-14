@@ -225,6 +225,7 @@ export class TextFieldComponent extends FabricInputComponent {
     // call writevalue to allow for ngModel
     // updates
     this.onViewValueChanged(newValue);
+    this.writeValue(newValue);
     if (this.change) {
       this.change.emit({
         arguments: [newValue]

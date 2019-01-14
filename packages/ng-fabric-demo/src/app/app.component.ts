@@ -53,11 +53,11 @@ export class AppComponent {
 
 _lower:number = 0;
 _datePicked:Date;
-_name:string = "test";
+_name:string;
 
   _handleSubmitForm(f:NgForm){
-    console.log("changing text")
-    this._txtBox.change.emit();
+    console.log("changing text");
+    this._name = "I have changed"
   }
 
   @ViewChild("txtbox")

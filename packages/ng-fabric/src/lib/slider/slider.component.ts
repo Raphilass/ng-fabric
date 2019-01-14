@@ -92,7 +92,7 @@ export class SliderComponent extends FabricInputComponent {
   private onChange = (newValue) => {
     // call writevalue to allow for ngModel
     // updates
-    this.writeValue(newValue);
+    this.onModelValueChanged(newValue);
     if (this.change) {
       this.change.emit({
         arguments: [newValue]
@@ -109,4 +109,7 @@ export class SliderComponent extends FabricInputComponent {
   vertical:boolean;
 
 
+  onModelValueChanged = (val: any) => {
+    this.value = val;
+  }
 }

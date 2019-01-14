@@ -84,10 +84,11 @@ import { SliderComponent } from './slider/slider.component';
     CheckboxComponent,
     ChoiceGroupComponent,
     ComboBoxComponent,
-==== BASE ====
-    PanelHeaderDirective
-==== BASE ====
->>>>>>> C:\Users\ESWAR~1.PRA\AppData\Local\Temp\meld-tmp-Remote8zadle47
+    // PanelHeaderDirective,
+    DropdownComponent,
+    SearchboxComponent,
+    DatePickerComponent,
+    SliderComponent
   ]
 })
 export class NgFabricModule {}
