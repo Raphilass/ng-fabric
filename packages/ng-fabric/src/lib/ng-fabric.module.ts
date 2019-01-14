@@ -20,16 +20,20 @@ import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
 import { CommandBarComponent } from "./command-bar/command-bar.component";
 import { NormalPeoplePickerComponent } from "./normal-people-picker/normal-people-picker.component";
 import { CommonModule } from "@angular/common";
-import { RenderingTemplateDirective } from "./rendering-template.directive";
 import { TextFieldComponent } from "./text-field/text-field.component";
 import { CheckboxComponent } from "./checkbox/checkbox.component";
 import { ChoiceGroupComponent } from "./choice-group/choice-group.component";
 import { ComboBoxComponent } from "./combo-box/combo-box.component";
-// import { PanelHeaderDirective } from './panel-header.directive';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { SliderComponent } from './slider/slider.component';
+import {
+  PanelHeaderDirective,
+  PanelFooterContentDirective,
+  PanelFooterDirective,
+  PanelNavigationDirective
+} from "./panel/panel-directives";
 
 @NgModule({
   declarations: [
@@ -48,16 +52,18 @@ import { SliderComponent } from './slider/slider.component';
     BreadcrumbComponent,
     CommandBarComponent,
     NormalPeoplePickerComponent,
-    RenderingTemplateDirective,
     TextFieldComponent,
     CheckboxComponent,
     ChoiceGroupComponent,
     ComboBoxComponent,
-    // PanelHeaderDirective,
     DropdownComponent,
     SearchboxComponent,
     DatePickerComponent,
-    SliderComponent
+    SliderComponent,
+    PanelHeaderDirective,
+    PanelFooterContentDirective,
+    PanelFooterDirective,
+    PanelNavigationDirective
   ],
   imports: [CommonModule],
   exports: [
@@ -76,16 +82,18 @@ import { SliderComponent } from './slider/slider.component';
     BreadcrumbComponent,
     CommandBarComponent,
     NormalPeoplePickerComponent,
-    RenderingTemplateDirective,
     TextFieldComponent,
     CheckboxComponent,
     ChoiceGroupComponent,
     ComboBoxComponent,
-    // PanelHeaderDirective,
     DropdownComponent,
     SearchboxComponent,
     DatePickerComponent,
-    SliderComponent
+    SliderComponent,
+    PanelHeaderDirective,
+    PanelFooterContentDirective,
+    PanelFooterDirective,
+    PanelNavigationDirective
   ]
 })
 export class NgFabricModule {}

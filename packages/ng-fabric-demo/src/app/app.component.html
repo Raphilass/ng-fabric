@@ -71,6 +71,16 @@
           <!-- {{showPanel}} -->
         </div>
 
+        <fabric-panel [isOpen]="_panelOpen" (dismissed)="_panelDismissed($event)" [isFooterAtBottom]="true" headerText="Header From Props">
+          This is panel content
+          <ng-container *panelFooterContent="let ctx">
+            <fabric-primary-button text="Submit"></fabric-primary-button>
+          </ng-container>
+          <ng-container *panelNavigation="let ctx">
+            Navigation
+          </ng-container>
+        </fabric-panel>
+        <fabric-primary-button text="Open Panel" (onClick)="_openPanel($event)"></fabric-primary-button>
       </div>
     </div>
   </div>

@@ -1,7 +1,4 @@
-import {
-  ReactComponentHost,
-  ReactComponentProp
-} from "./imports";
+import { ReactComponentHost, ReactComponentProp } from "./imports";
 import { Output, Input, EventEmitter } from "@angular/core";
 import {
   IButton,

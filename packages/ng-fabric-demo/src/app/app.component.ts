@@ -149,4 +149,14 @@ _name:string;
   ];
 
   _buttonClick = () => this._text = "Changed";
+  _refreshCount = 0;
+
+  _panelOpen = false;
+
+  _openPanel()  {
+    this._refreshCount++;
+    this._panelOpen = true;
+  }
+
+  _panelDismissed = () => this._panelOpen = false;
 }
