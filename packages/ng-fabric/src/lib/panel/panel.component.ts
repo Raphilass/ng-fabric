@@ -10,7 +10,8 @@ import {
   Output,
   EventEmitter,
   ViewChild,
-  TemplateRef
+  TemplateRef,
+  ViewContainerRef
 } from "@angular/core";
 import { FabricComponent } from "../fabric-component";
 import { ReactComponentType, ReactComponentProp } from "../../lib/imports";
@@ -21,37 +22,37 @@ import {
   ILayerProps
 } from "office-ui-fabric-react";
 import { HOST_COMPONENT_TEMPLATE } from "../host-component-template";
+import { HostDataProvider } from "@eswarpr/ng-react-proxy";
 
 @Component({
   selector: "fabric-panel",
-  templateUrl: "./panel.component.html"
+  templateUrl: "./panel.component.html",
+  providers: [HostDataProvider]
 })
 @ReactComponentType(Panel)
 export class PanelComponent extends FabricComponent {
   /**
-   * Optional custom renderer for footer region. Replaces sticky footer.
+   * Specifies the container that will host the panel header
    */
-  @Input()
-  @ReactComponentProp()
-  onRenderFooter: TemplateRef<any>;
+  @ViewChild("panelHeader", {
+    read: ViewContainerRef
+  })
+  private panelHeader: ViewContainerRef;
+
   /**
-   * Optional custom renderer navigation region. Replaces current close button.
+   * Specifies the container that will host the panel footer
    */
-  @Input()
-  @ReactComponentProp()
-  onRenderNavigation: TemplateRef<any>;
+  @ViewChild("panelFooterContent", {
+    read: ViewContainerRef
+  })
+  private panelFooterContent: ViewContainerRef;
   /**
-   * Custom renderer for content in the sticky footer
+   * Initializes a new instance of the PanelComponent
    */
-  @Input()
-  @ReactComponentProp()
-  onRenderFooterContent: TemplateRef<any>;
-  /**
-   * Optional custom renderer for header region. Replaces current title
-   */
-  @Input()
-  @ReactComponentProp()
-  onRenderHeader: TemplateRef<any>;
+  constructor(private hostDataProvider: HostDataProvider) {
+    super();
+    this.hostDataProvider.setComponentHost(this);
+  }
   /**
    * Header text for the Panel.
    * @defaultvalue ""
