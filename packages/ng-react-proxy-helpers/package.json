@@ -1,0 +1,9 @@
+{
+  "name": "@eswarpr/ng-react-proxy-helpers",
+  "version": "1.7.17",
+  "peerDependencies": {
+    "@angular/common": "^7.1.0",
+    "@angular/core": "^7.1.0",
+    "@eswarpr/ng-react-proxy": "^1.7.17"
+  }
+}

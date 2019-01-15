@@ -5,18 +5,31 @@
         <fabric-nav [groups]="_componentList"></fabric-nav>
       </div>
       <div class="ms-Grid-col ms-sm12 ms-md12 ms-lg10">
-        <fabric-panel [isOpen]="_panelOpen" (dismissed)="_panelDismissed($event)" [isFooterAtBottom]="true" headerText="Header From Props">
-          <fabric-text-field label="Hello World" required></fabric-text-field>
+        <fabric-panel
+          [isOpen]="_panelOpen"
+          (dismissed)="_panelDismissed($event)"
+          [isFooterAtBottom]="true"
+          headerText="Header From Props"
+        >
+          <fabric-text-field label="Hello World">
+            <div *textFieldLabel="let ctx">
+              <span [textContent]="ctx.label"></span>
+            </div>
+          </fabric-text-field>
+          <ng-container *panelHeader="let ctx">
+            <span>This is a header</span>
+          </ng-container>
           <ng-container *panelFooterContent="let ctx">
-            <fabric-primary-button text="Submit" (onClick)="_buttonClick($event)"></fabric-primary-button>
+            <fabric-primary-button
+              text="Submit"
+              (onClick)="_buttonClick($event)"
+            ></fabric-primary-button>
           </ng-container>
         </fabric-panel>
-        <fabric-text-field suffix="tsg.com" label="Hello World" required="true">
-          <ng-container *textFieldLabel="let ctx">
-            <span [textContent]="ctx.label"></span>
-          </ng-container>
-        </fabric-text-field>
-        <fabric-primary-button text="Open Panel" (onClick)="_openPanel($event)"></fabric-primary-button>
+        <fabric-primary-button
+          text="Open Panel"
+          (onClick)="_openPanel($event)"
+        ></fabric-primary-button>
       </div>
     </div>
   </div>

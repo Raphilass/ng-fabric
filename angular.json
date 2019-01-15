@@ -42,12 +42,12 @@
       "root": "packages/ng-fabric-demo/",
       "sourceRoot": "packages/ng-fabric-demo/src",
       "projectType": "application",
-      "prefix": "app",      
+      "prefix": "app",
       "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "options": {            
+          "options": {
             "outputPath": "dist/ng-fabric-demo",
             "index": "packages/ng-fabric-demo/src/index.html",
             "main": "packages/ng-fabric-demo/src/main.ts",
@@ -57,7 +57,7 @@
               "packages/ng-fabric-demo/src/favicon.ico",
               "packages/ng-fabric-demo/src/assets"
             ],
-            "styles": [              
+            "styles": [
               "packages/ng-fabric-demo/src/styles.scss"
             ],
             "scripts": [],
@@ -159,6 +159,41 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "packages/ng-fabric-demo-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ng-react-proxy-helpers": {
+      "root": "packages/ng-react-proxy-helpers",
+      "sourceRoot": "packages/ng-react-proxy-helpers/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/ng-react-proxy-helpers/tsconfig.lib.json",
+            "project": "packages/ng-react-proxy-helpers/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "packages/ng-react-proxy-helpers/src/test.ts",
+            "tsConfig": "packages/ng-react-proxy-helpers/tsconfig.spec.json",
+            "karmaConfig": "packages/ng-react-proxy-helpers/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "packages/ng-react-proxy-helpers/tsconfig.lib.json",
+              "packages/ng-react-proxy-helpers/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

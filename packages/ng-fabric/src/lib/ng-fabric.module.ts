@@ -30,8 +30,8 @@ import {
   PanelFooterDirective,
   PanelNavigationDirective
 } from "./panel/panel-directives";
-import { NgReactProxyModule } from "@eswarpr/ng-react-proxy";
 import { TextFieldLabelDirective } from "./text-field/text-field-directives";
+import { NgReactProxyModule } from "packages/ng-react-proxy-helpers/src/public_api";
 
 @NgModule({
   declarations: [

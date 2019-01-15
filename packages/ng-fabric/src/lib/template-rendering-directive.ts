@@ -25,24 +25,7 @@ export abstract class TemplateRenderingDirective
 
   private updateView() {
     if (this.hostDataProvider && this.templateRef) {
-      // get the container view ref for panel header
-      // if it doesn't exist, then nothing to do
-      const _container = this.hostDataProvider.getHostViewContainerRef(
-        this.containerName
-      );
-      if (!_container) {
-        return;
-      }
-
-      // create the context data from the provider
-      // get the context data now
-      const _contextData = {
-        $implicit: this.hostDataProvider.getHostProps()
-      };
-
-      // now create the view in the container
-      _container.clear();
-      _container.createEmbeddedView(this.templateRef, _contextData);
+      this.hostDataProvider.setTemplateForContainer(this.containerName, this.templateRef);
     }
   }
   ngOnChanges() {

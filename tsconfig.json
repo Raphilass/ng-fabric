@@ -24,6 +24,12 @@
       ],
       "ng-fabric/*": [
         "dist/ng-fabric/*"
+      ],
+      "ng-react-proxy-helpers": [
+        "dist/ng-react-proxy-helpers"
+      ],
+      "ng-react-proxy-helpers/*": [
+        "dist/ng-react-proxy-helpers/*"
       ]
     }
   }
