@@ -6,10 +6,17 @@ import { NgFabricModule } from "../../../ng-fabric/src/public_api";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { AppRoutingModule } from "./app-routing.module";
+import { NgReactProxyModule } from "@eswarpr/ng-react-proxy";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, CommonModule, FormsModule, /* AppRoutingModule, */ NgFabricModule],
+  imports: [
+    BrowserModule,
+    CommonModule,
+    FormsModule,
+    /* AppRoutingModule, */ NgFabricModule,
+    NgReactProxyModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
   exports: []
