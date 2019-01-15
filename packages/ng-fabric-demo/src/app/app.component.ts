@@ -26,6 +26,7 @@ import { people } from "./PickerExampleData";
 import { IComboBoxOptionClassNames } from "office-ui-fabric-react/lib/components/ComboBox/ComboBox.classNames";
 import { NgForm } from "@angular/forms";
 import { TextFieldComponent } from "../../../ng-fabric/src/lib/text-field/text-field.component";
+import { number } from "prop-types";
 
 const _datePickerStrings: IDatePickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -57,6 +58,17 @@ _lower:number = 0;
 _datePicked:Date;
 _name:string;
 
+DropDown1:string[];
+DropDown2:string;
+
+_handleSetDropdown(){
+  this.DropDown1 = ["monday","tuesday"]
+}
+
+_handleSetDropdownSingle(){
+  this.DropDown2 = "monday";
+}
+
   _handleSubmitForm(f:NgForm){
     console.log("changing text");
     this._name = "I have changed"
@@ -65,7 +77,6 @@ _name:string;
   @ViewChild("txtbox")
   private _txtBox:TextFieldComponent
 
-  DropDown1:any;
   StartDate1:Date;
 
   showPanel: boolean = false;
@@ -80,6 +91,23 @@ _name:string;
   _onShowPanel(): void {
     this.showPanel = true;
   };
+
+  private _dropDownOptions:IDropdownOption[] = [{
+    key:"monday",
+    text:"Monday"
+  },{
+    key:"tuesday",
+    text:"Tuesday"
+  },{
+    key:"wednesday",
+    text:"Wednesday"
+  },{
+    key:"thursday",
+    text:"Thursday"
+  },{
+    key:"friday",
+    text:"Friday"
+  }]
 
 
   _dayOfWeek: DayOfWeek = DayOfWeek.Monday;

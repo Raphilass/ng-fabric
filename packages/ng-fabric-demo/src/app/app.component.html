@@ -12,13 +12,12 @@
         <fabric-searchbox placeholder="Search by Title" [underlined]="true" ariaLabel="Search control"></fabric-searchbox> -->
 
         <!-- <form #form="ngForm">      -->
-          <div>
-            <fabric-text-field #txtbox label="enter name" [(ngModel)]="_name" name="_name"></fabric-text-field>
-          </div>
-          <div>
-            <fabric-primary-button (onClick)="_handleSubmitForm()" text="Submit"
-              style="display: inline-block;margin-right: 15px;"></fabric-primary-button>
-          </div>
+        <div>
+          <fabric-text-field #txtbox label="enter name" [(ngModel)]="_name" name="_name"></fabric-text-field>
+        </div>
+        <div>
+          <fabric-primary-button (onClick)="_handleSubmitForm()" text="Submit" style="display: inline-block;margin-right: 15px;"></fabric-primary-button>
+        </div>
         <!-- </form> -->
         <div>
           <!-- {{form.value | json}} -->
@@ -26,61 +25,38 @@
           {{_name}}
         </div>
 
-        <!-- <h1>Combobox Control</h1>
-        <fabric-combo-box [options]="_comboDownOptions"></fabric-combo-box><br />
-        <h1>Dropdown Control</h1>
-        <fabric-dropdown [options]="_dropDownOptions"></fabric-dropdown>
-        <fabric-command-bar [items]="_dropDownOptions"></fabric-command-bar> -->
         <div>
-          <!-- <form #form="ngForm">
-            <h2>Text Fields</h2>
-            <fabric-label>Start Date</fabric-label>
-            <fabric-date-picker [firstDayOfWeek]="_dayOfWeek" [strings]="_datePickerStrings"
-             name="StartDate1"       
-             [(ngModel)]="StartDate1"    
-             placeholder="select a start date..."
-            ariaLabel="select a start date"></fabric-date-picker>
-            <fabric-text-field label="text" [(ngModel)]="textfield" name="textfield" ></fabric-text-field>
-            <fabric-dropdown [options]="_dropDownOptions" name="dropdown1" [(ngModel)]="DropDown1"></fabric-dropdown>
-            <fabric-combo-box [options]="_comboDownOptions" name="combo1" [(ngModel)]="comboValue"></fabric-combo-box>
-            <fabric-primary-button (onClick)="_handleSubmitForm(form)" text="Submit" [disabled]="!form.valid" ></fabric-primary-button>
-          </form> -->
-          <!-- <h2>Command Bar</h2>
-          <fabric-command-bar 
-          [items]="getItems()" 
-          [overflowItems]="getOverflowItems()" 
-          [farItems]="getFarItems()"></fabric-command-bar>
-
-          <h2>Date Picker</h2>
-          <fabric-date-picker [firstDayOfWeek]="_dayOfWeek" [strings]="_datePickerStrings" placeholder="select a date..."
-            ariaLabel="select a date"></fabric-date-picker>
- -->
-
-
-
-
-          <!-- <h2>Panel Button</h2>
-          <fabric-default-button (onClick)="_onShowPanel()" text="Open Panel"></fabric-default-button>
-          <fabric-panel [isOpen]="showPanel" [type]="_panelType.medium" [hasCloseButton]="true" [isBlocking]="false"
-            (dismiss)="_onClosePanel()" headerText="Panel - Small, right-aligned, fixed, with footer"
-            closeButtonAriaLabel="Close">
-            Content
-
-          </fabric-panel> -->
-
-          <!-- {{showPanel}} -->
+          <fabric-dropdown [options]="_dropDownOptions" [multiSelect]="true" label="Multi-select Example" name="dropdown1" [(ngModel)]="DropDown1"></fabric-dropdown>
+          <span>Dropdown Value : {{DropDown1 | json}}</span>
+          
+          <div>
+            <fabric-primary-button (onClick)="_handleSetDropdown()" text="Submit" style="display: inline-block;margin-right: 15px;"></fabric-primary-button>
+          </div>
         </div>
+        <div>
 
-        <fabric-panel [isOpen]="_panelOpen" (dismissed)="_panelDismissed($event)" [isFooterAtBottom]="true" headerText="Header From Props">
-          This is panel content
-          <ng-container *panelFooterContent="let ctx">
-            <fabric-primary-button text="Submit"></fabric-primary-button>
-          </ng-container>
-          <ng-container *panelNavigation="let ctx">
-            Navigation
-          </ng-container>
-        </fabric-panel>
-        <fabric-primary-button text="Open Panel" (onClick)="_openPanel($event)"></fabric-primary-button>
+            <div>
+                <fabric-dropdown [options]="_dropDownOptions" label="Single value select example" name="dropdown1" [(ngModel)]="DropDown2"></fabric-dropdown>
+                <span>Dropdown Value : {{DropDown2 | json}}</span>
+                
+                <div>
+                  <fabric-primary-button (onClick)="_handleSetDropdownSingle()" text="Submit" style="display: inline-block;margin-right: 15px;"></fabric-primary-button>
+                </div>
+              </div>
+              <div>
+
+          <fabric-panel [isOpen]="_panelOpen" (dismissed)="_panelDismissed($event)" [isFooterAtBottom]="true"
+            headerText="Header From Props">
+            This is panel content
+            <ng-container *panelFooterContent="let ctx">
+              <fabric-primary-button text="Submit"></fabric-primary-button>
+            </ng-container>
+            <ng-container *panelNavigation="let ctx">
+              Navigation
+            </ng-container>
+          </fabric-panel>
+          <fabric-primary-button text="Open Panel" (onClick)="_openPanel($event)"></fabric-primary-button>
+        </div>
       </div>
     </div>
   </div>

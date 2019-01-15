@@ -6,6 +6,7 @@ import { IComponentEvent } from '@eswarpr/ng-react-proxy/src/component-event';
 import { FabricInputComponent } from '../fabric-input-component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IKeytipProps, ITheme } from 'office-ui-fabric-react';
+import { object } from 'prop-types';
 
 @Component({
   selector: 'fabric-dropdown',
@@ -89,7 +90,19 @@ export class DropdownComponent extends FabricInputComponent {
     */
   @Input()
   @ReactComponentProp()
-  value: string;
+  value: any;
+
+  @Input()
+  @ReactComponentProp({
+    enableExplicitChangeDetection: true
+  })
+  selectedKeys: string[] | number[];
+
+  @Input()
+  @ReactComponentProp({
+    enableExplicitChangeDetection: true
+  })
+  selectedKey: string | number;
 
 
   /**
@@ -105,46 +118,43 @@ export class DropdownComponent extends FabricInputComponent {
    */
   @ReactComponentProp()
   private onChange = (event, newValue) => {
+    this.onViewValueChanged(newValue);
+
 
     if (this.multiSelect) {
-      // update teh array
-      let idx:number = this._multiSelectArray.findIndex(item => item.text == newValue.text);
-      if(idx > -1){
-        // item found in array splice it out
-        this._multiSelectArray.splice(idx,1);
-      } else {
-        this._multiSelectArray.push(newValue)
-      }
 
-      // call write value
-      this.onModelValueChanged(this._multiSelectArray);
-      if (this.change) {
-        this.change.emit({
-          arguments: [this._multiSelectArray]
-        });
-        this.onSelect.emit({
-          arguments: [this._multiSelectArray]
-        });
+      // taking out?
+      if (!newValue.selected) {
+        this.selectedKeys = this.selectedKeys.filter(x => x !== newValue.key);
+      }
+      else {
+        const _clonedArray = this.selectedKeys ? this.selectedKeys.slice() : [];
+        _clonedArray.push(newValue.key);
+        this.selectedKeys = _clonedArray;
       }
 
     } else {
-      // call writevalue to allow for ngModel
-      // updates
-      this.onModelValueChanged(newValue);
-      if (this.change) {
-        this.change.emit({
-          arguments: [newValue]
-        });
-        this.onSelect.emit({
-          arguments: [newValue]
-        });
-      }
+      this.selectedKey = newValue.key
     }
+
+    if (this.change) {
+      this.change.emit({
+        arguments: [newValue]
+      });
+      this.onSelect.emit({
+        arguments: [newValue]
+      });
+    }
+
 
   }
 
-  onModelValueChanged = (val: any) => {
-    this.value = val;
+  onModelValueChanged = (val: IDropdownOption | string | number | string[] | number[]) => {
+    if(this.multiSelect){
+    this.selectedKeys = val as any;
+    } else {
+      this.selectedKey = val as any;
+    }
   }
 
 }
