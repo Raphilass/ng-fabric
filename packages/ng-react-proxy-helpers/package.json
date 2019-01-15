@@ -1,6 +1,25 @@
 {
   "name": "@eswarpr/ng-react-proxy-helpers",
-  "version": "1.7.17",
+  "version": "1.7.18",
+  "description": "Provides helper directives for implementing advanced rendering techniques for React components in Angular",
+  "main": "./dist/index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eswarpr/ng-fabric.git"
+  },
+  "keywords": [
+    "Angular2",
+    "React"
+  ],
+  "author": "Eswar Prakash",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eswarpr/ng-fabric/issues"
+  },
+  "homepage": "https://github.com/eswarpr/ng-fabric#readme",
   "peerDependencies": {
     "@angular/common": "^7.1.0",
     "@angular/core": "^7.1.0",

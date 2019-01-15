@@ -31,7 +31,7 @@ import {
   PanelNavigationDirective
 } from "./panel/panel-directives";
 import { TextFieldLabelDirective } from "./text-field/text-field-directives";
-import { NgReactProxyModule } from "packages/ng-react-proxy-helpers/src/public_api";
+import { NgReactProxyModule } from "@eswarpr/ng-react-proxy-helpers";
 
 @NgModule({
   declarations: [
