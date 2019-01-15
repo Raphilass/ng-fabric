@@ -47,6 +47,21 @@ export class PanelComponent extends FabricComponent {
   })
   private panelFooterContent: ViewContainerRef;
   /**
+   * Specifies the container that will host the panel footer
+   */
+  @ViewChild("panelFooter", {
+    read: ViewContainerRef
+  })
+  private panelFooter: ViewContainerRef;
+
+  /**
+   * Specifies the container that will host the panel navigation
+   */
+  @ViewChild("panelNavigation", {
+    read: ViewContainerRef
+  })
+  private panelNavigation: ViewContainerRef;
+  /**
    * Initializes a new instance of the PanelComponent
    */
   constructor(private hostDataProvider: HostDataProvider) {

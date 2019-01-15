@@ -14,6 +14,11 @@
             Navigation
           </ng-container>
         </fabric-panel>
+        <fabric-text-field suffix="tsg.com" label="Hello World" required="true">
+          <ng-container *textFieldLabel="let ctx">
+            <span [textContent]="ctx.label"></span>
+          </ng-container>
+        </fabric-text-field>
         <fabric-primary-button text="Open Panel" (onClick)="_openPanel($event)"></fabric-primary-button>
       </div>
     </div>
