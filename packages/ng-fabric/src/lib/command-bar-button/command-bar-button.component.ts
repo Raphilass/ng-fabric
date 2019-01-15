@@ -10,7 +10,7 @@ import { HOST_COMPONENT_TEMPLATE } from "../host-component-template";
 
 @Component({
   selector: "fabric-command-bar-button",
-  template: HOST_COMPONENT_TEMPLATE
+  templateUrl: "../base-button-template.html"
 })
 @ReactComponentType(CommandBarButton)
 export class CommandBarButtonComponent extends BaseButton {}

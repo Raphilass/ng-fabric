@@ -11,10 +11,7 @@
           [isFooterAtBottom]="true"
           headerText="Header From Props"
         >
-          <fabric-text-field label="Hello World">
-            <div *textFieldLabel="let ctx">
-              <span [textContent]="ctx.label"></span>
-            </div>
+          <fabric-text-field label="Hello World" suffix="@tsg.com" description="Text field description">
           </fabric-text-field>
           <ng-container *panelHeader="let ctx">
             <span>This is a header</span>
@@ -29,7 +26,11 @@
         <fabric-primary-button
           text="Open Panel"
           (onClick)="_openPanel($event)"
-        ></fabric-primary-button>
+        >
+        <ng-container *buttonText="let ctx">
+          <span>{{ 'Changed Label ' + ctx?.text }}</span>
+        </ng-container>
+      </fabric-primary-button>
       </div>
     </div>
   </div>

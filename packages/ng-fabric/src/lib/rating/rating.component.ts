@@ -60,6 +60,8 @@ export class RatingComponent extends FabricComponent {
    * Callback issued when the rating changes.
    */
   @Output()
-  @ReactComponentProp()
-  onChange: EventEmitter<number> = new EventEmitter();
+  @ReactComponentProp({
+    name: "onChange"
+  })
+  change: EventEmitter<number> = new EventEmitter();
 }

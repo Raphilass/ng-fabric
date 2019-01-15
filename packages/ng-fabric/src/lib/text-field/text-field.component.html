@@ -6,4 +6,25 @@
       elementFor: 'onRenderLabel'
     "
   ></ng-container>
+  <ng-container
+    *ngReactTemplateContainer="
+      let x;
+      name: 'description';
+      elementFor: 'onRenderDescription'
+    "
+  ></ng-container>
+  <ng-container
+    *ngReactTemplateContainer="
+      let x;
+      name: 'prefix';
+      elementFor: 'onRenderPrefix'
+    "
+  ></ng-container>
+  <ng-container
+    *ngReactTemplateContainer="
+      let x;
+      name: 'suffix';
+      elementFor: 'onRenderSuffix'
+    "
+  ></ng-container>
 </div>

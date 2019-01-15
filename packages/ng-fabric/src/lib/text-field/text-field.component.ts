@@ -230,11 +230,11 @@ export class TextFieldComponent extends FabricInputComponent {
         arguments: [newValue]
       });
     }
-  };
+  }
 
   onModelValueChanged = (val: any) => {
     this.value = val;
-  };
+  }
 
   /**
    * Initializes a new instance of the TextFieldComponent
