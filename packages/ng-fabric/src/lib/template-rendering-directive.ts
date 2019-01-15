@@ -1,21 +1,29 @@
-import { TemplateRef, DoCheck, Host } from "@angular/core";
+import {
+  TemplateRef,
+  DoCheck,
+  Host,
+  OnChanges,
+  AfterViewInit,
+  OnInit
+} from "@angular/core";
 import { HostDataProvider } from "@eswarpr/ng-react-proxy";
 
 /**
  * Represents a base class that implements rendering based
  * on a host view
  */
-export abstract class TemplateRenderingDirective implements DoCheck {
-    /**
-     * Initializes a new instance of this class
-     */
+export abstract class TemplateRenderingDirective
+  implements OnChanges, OnInit {
+  /**
+   * Initializes a new instance of this class
+   */
   constructor(
     private templateRef: TemplateRef<any>,
     private hostDataProvider: HostDataProvider,
     private containerName: string
   ) {}
 
-  ngDoCheck() {
+  private updateView() {
     if (this.hostDataProvider && this.templateRef) {
       // get the container view ref for panel header
       // if it doesn't exist, then nothing to do
@@ -36,5 +44,11 @@ export abstract class TemplateRenderingDirective implements DoCheck {
       _container.clear();
       _container.createEmbeddedView(this.templateRef, _contextData);
     }
+  }
+  ngOnChanges() {
+    this.updateView();
+  }
+  ngOnInit() {
+    this.updateView();
   }
 }
