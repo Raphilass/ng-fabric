@@ -42,14 +42,30 @@ const _datePickerStrings: IDatePickerStrings = {
   closeButtonAriaLabel: 'Close date picker'
 };
 
-
-
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
+
+  /* modal */
+
+_showModal:boolean = false;
+private closeModal(){
+  console.log("modal close");
+  this._showModal = true;
+}
+dialogContentPros:IDialogContentProps = {
+  type:DialogType.normal,
+  title:"Modal",
+  subText:"Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails."
+}
+
+showDialog(){
+  this._showModal = true;
+}
+  /** ************ */
 
 _lower:number = 0;
 _datePicked:Date;
@@ -60,8 +76,8 @@ _name:string;
     this._name = "I have changed"
   }
 
-  @ViewChild("txtbox")
-  private _txtBox:TextFieldComponent
+  // @ViewChild("txtbox")
+  // private _txtBox:TextFieldComponent
 
   DropDown1:any;
   StartDate1:Date;
