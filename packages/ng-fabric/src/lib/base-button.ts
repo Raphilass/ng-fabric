@@ -1,5 +1,5 @@
-import { ReactComponentHost, ReactComponentProp } from "./imports";
-import { Output, Input, EventEmitter } from "@angular/core";
+import { ReactComponentHost, ReactComponentProp, HostDataProvider } from "./imports";
+import { Output, Input, EventEmitter, Directive, TemplateRef, Host } from "@angular/core";
 import {
   IButton,
   IButtonStyles,
@@ -10,6 +10,26 @@ import { ITheme } from "@uifabric/styling";
 import { IIconProps } from "office-ui-fabric-react/lib/Icon";
 import { IContextualMenuProps } from "office-ui-fabric-react/lib/ContextualMenu";
 import { IRenderFunction, IComponentAs } from "@uifabric/utilities";
+import { TemplateRenderingDirective } from "./template-rendering-directive";
+
+/**
+ * Represents a directive that can be used to configure template
+ * for text field description
+ */
+@Directive({
+  selector: "[buttonText]"
+})
+export class ButtonTextDirective extends TemplateRenderingDirective {
+  /**
+   * Initializes a new instance of the class
+   */
+  constructor(
+    templateRef: TemplateRef<any>,
+    @Host() hostDataProvider: HostDataProvider
+  ) {
+    super(templateRef, hostDataProvider, "text");
+  }
+}
 
 // Copyright (c) 2018 Eswar Prakash
 //

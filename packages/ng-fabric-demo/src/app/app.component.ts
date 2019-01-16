@@ -186,5 +186,7 @@ _handleSetDropdownSingle(){
     this._panelOpen = true;
   }
 
+  _buttonClick = () => alert("Hello World");
+  
   _panelDismissed = () => this._panelOpen = false;
 }

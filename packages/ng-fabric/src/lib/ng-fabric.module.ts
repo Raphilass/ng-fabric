@@ -34,8 +34,14 @@ import {
   PanelFooterDirective,
   PanelNavigationDirective
 } from "./panel/panel-directives";
-var NgReactProxyModule = require("@eswarpr/ng-react-proxy/dist/index");
-import { TextFieldLabelDirective } from "./text-field/text-field-directives";
+import {
+  TextFieldLabelDirective,
+  TextFieldDescriptionDirective,
+  TextFieldPrefixDirective,
+  TextFieldSuffixDirective
+} from "./text-field/text-field-directives";
+import { NgReactProxyModule } from "@eswarpr/ng-react-proxy-helpers";
+import { ButtonTextDirective } from "./base-button";
 
 @NgModule({
   declarations: [
@@ -66,7 +72,11 @@ import { TextFieldLabelDirective } from "./text-field/text-field-directives";
     PanelFooterContentDirective,
     PanelFooterDirective,
     PanelNavigationDirective,
-    TextFieldLabelDirective
+    TextFieldLabelDirective,
+    TextFieldDescriptionDirective,
+    TextFieldPrefixDirective,
+    TextFieldSuffixDirective,
+    ButtonTextDirective
   ],
   imports: [CommonModule, NgReactProxyModule],
   exports: [
@@ -97,7 +107,11 @@ import { TextFieldLabelDirective } from "./text-field/text-field-directives";
     PanelFooterContentDirective,
     PanelFooterDirective,
     PanelNavigationDirective,
-    TextFieldLabelDirective
+    TextFieldLabelDirective,
+    TextFieldDescriptionDirective,
+    TextFieldPrefixDirective,
+    TextFieldSuffixDirective,
+    ButtonTextDirective
   ]
 })
 export class NgFabricModule {}

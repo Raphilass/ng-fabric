@@ -1,14 +1,30 @@
 <div #host>
-  <div reactRenderingTemplate="onRenderLabel">
-    <ng-container #label></ng-container>
-  </div>
-  <div reactRenderingTemplate="onRenderDescription">
-    <ng-container #description></ng-container>
-  </div>
-  <div reactRenderingTemplate="onRenderPrefix">
-    <ng-container #prefix></ng-container>
-  </div>
-  <div reactRenderingTemplate="onRenderSuffix">
-    <ng-container #suffix></ng-container>
-  </div>
+  <ng-container
+    *ngReactTemplateContainer="
+      let x;
+      name: 'labelTemplate';
+      elementFor: 'onRenderLabel'
+    "
+  ></ng-container>
+  <ng-container
+    *ngReactTemplateContainer="
+      let x;
+      name: 'description';
+      elementFor: 'onRenderDescription'
+    "
+  ></ng-container>
+  <ng-container
+    *ngReactTemplateContainer="
+      let x;
+      name: 'prefix';
+      elementFor: 'onRenderPrefix'
+    "
+  ></ng-container>
+  <ng-container
+    *ngReactTemplateContainer="
+      let x;
+      name: 'suffix';
+      elementFor: 'onRenderSuffix'
+    "
+  ></ng-container>
 </div>

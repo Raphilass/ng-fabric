@@ -1,3 +1,9 @@
+
+// Copyright (c) 2018 Eswar Prakash
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
 import { Input } from "@angular/core";
 
 /**

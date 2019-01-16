@@ -21,12 +21,11 @@ export abstract class FabricInputComponent extends FabricComponent
 
   /**
    * Handles changes to the model value
-   * @param obj 
    */
   writeValue(obj: any): void {
     // call all change observers
     // now
-    if(this.onModelValueChanged) {
+    if (this.onModelValueChanged) {
       this.onModelValueChanged(obj);
     }
   }
@@ -36,7 +35,7 @@ export abstract class FabricInputComponent extends FabricComponent
    * when the value in the view has changed
    * @param obj The new value from the view
    */
-  protected onViewValueChanged(obj: any) {
+  protected onViewValueChanged = (obj: any) => {
     this._changeFnList.forEach(f => f(obj));
   }
 

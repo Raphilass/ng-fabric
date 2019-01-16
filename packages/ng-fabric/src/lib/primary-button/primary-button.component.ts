@@ -7,13 +7,15 @@ import { BaseButton } from "../base-button";
 import { ReactComponentType } from "../../lib/imports";
 import { PrimaryButton } from "office-ui-fabric-react";
 import { HOST_COMPONENT_TEMPLATE } from "../host-component-template";
+import { HostDataProvider } from "@eswarpr/ng-react-proxy";
 
 /**
  * Represents a button rendered using the PrimaryButton style
  */
 @Component({
   selector: "fabric-primary-button",
-  template: HOST_COMPONENT_TEMPLATE
+  templateUrl: "../base-button-template.html",
+  providers: [HostDataProvider]
 })
 @ReactComponentType(PrimaryButton)
 export class PrimaryButtonComponent extends BaseButton {}

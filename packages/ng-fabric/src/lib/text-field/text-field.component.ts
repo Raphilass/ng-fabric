@@ -48,30 +48,6 @@ import { HOST_COMPONENT_TEMPLATE } from "../host-component-template";
 @ReactComponentType(TextField)
 export class TextFieldComponent extends FabricInputComponent {
   /**
-   * Specifies the container that holds the template for the label
-   */
-  @ViewChild("label", { read: ViewContainerRef })
-  private labelTemplate: ViewContainerRef;
-
-  /**
-   * Specifies the container that holds the template for the description
-   */
-  @ViewChild("description", { read: ViewContainerRef })
-  private descriptionTemplate: ViewContainerRef;
-
-  /**
-   * Specifies the container that holds the template for the prefix
-   */
-  @ViewChild("prefix", { read: ViewContainerRef })
-  private prefixTemplate: ViewContainerRef;
-
-  /**
-   * Specifies the container that holds the template for the suffix
-   */
-  @ViewChild("suffix", { read: ViewContainerRef })
-  private suffixTemplate: ViewContainerRef;
-
-  /**
    * Whether or not the text field is a multiline text field.:
    * @defaultvalue false
    */
@@ -255,11 +231,11 @@ export class TextFieldComponent extends FabricInputComponent {
         arguments: [newValue]
       });
     }
-  };
+  }
 
   onModelValueChanged = (val: any) => {
     this.value = val;
-  };
+  }
 
   /**
    * Initializes a new instance of the TextFieldComponent

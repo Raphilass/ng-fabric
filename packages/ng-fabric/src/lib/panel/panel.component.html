@@ -1,15 +1,32 @@
 <div #host>
   <div><ng-content></ng-content></div>
-  <div reactRenderingTemplate="onRenderFooter">
-    <ng-container #panelFooter></ng-container>
-  </div>
-  <div reactRenderingTemplate="onRenderHeader">
-    <ng-container #panelHeader></ng-container>
-  </div>
-  <div reactRenderingTemplate="onRenderFooterContent">
-    <ng-container #panelFooterContent></ng-container>
-  </div>
-  <div reactRenderingTemplate="onRenderNavigation">
-    <ng-container #panelNavigation></ng-container>
-  </div>
+  <ng-container
+    *ngReactTemplateContainer="
+      let x;
+      name: 'panelFooterContent';
+      elementFor: 'onRenderFooterContent'
+    "
+  ></ng-container>
+  <ng-container
+    *ngReactTemplateContainer="
+      let x;
+      name: 'panelFooter';
+      elementFor: 'onRenderFooter'
+    "
+  ></ng-container>
+  <ng-container
+    *ngReactTemplateContainer="
+      let x;
+      name: 'panelHeader';
+      elementFor: 'onRenderHeader'
+    "
+  ></ng-container>
+  <ng-container
+    *ngReactTemplateContainer="
+      let x;
+      name: 'panelNavigation';
+      elementFor: 'onRenderNavigation'
+    "
+  ></ng-container>
+
 </div>

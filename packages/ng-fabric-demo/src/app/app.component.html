@@ -57,6 +57,32 @@
           </fabric-panel>
           <fabric-primary-button text="Open Panel" (onClick)="_openPanel($event)"></fabric-primary-button>
         </div>
+        <fabric-panel
+          [isOpen]="_panelOpen"
+          (dismissed)="_panelDismissed($event)"
+          [isFooterAtBottom]="true"
+          headerText="Header From Props"
+        >
+          <fabric-text-field label="Hello World" suffix="@tsg.com" description="Text field description">
+          </fabric-text-field>
+          <ng-container *panelHeader="let ctx">
+            <span>This is a header</span>
+          </ng-container>
+          <ng-container *panelFooterContent="let ctx">
+            <fabric-primary-button
+              text="Submit"
+              (onClick)="_buttonClick($event)"
+            ></fabric-primary-button>
+          </ng-container>
+        </fabric-panel>
+        <fabric-primary-button
+          text="Open Panel"
+          (onClick)="_openPanel($event)"
+        >
+        <ng-container *buttonText="let ctx">
+          <span>{{ 'Changed Label ' + ctx?.text }}</span>
+        </ng-container>
+      </fabric-primary-button>
       </div>
     </div>
   </div>

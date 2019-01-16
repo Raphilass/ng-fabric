@@ -42,12 +42,12 @@
       "root": "packages/ng-fabric-demo/",
       "sourceRoot": "packages/ng-fabric-demo/src",
       "projectType": "application",
-      "prefix": "app",      
+      "prefix": "app",
       "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "options": {            
+          "options": {
             "outputPath": "dist/ng-fabric-demo",
             "index": "packages/ng-fabric-demo/src/index.html",
             "main": "packages/ng-fabric-demo/src/main.ts",
@@ -57,7 +57,7 @@
               "packages/ng-fabric-demo/src/favicon.ico",
               "packages/ng-fabric-demo/src/assets"
             ],
-            "styles": [              
+            "styles": [
               "packages/ng-fabric-demo/src/styles.scss"
             ],
             "scripts": [],
@@ -165,7 +165,7 @@
           }
         }
       }
-    }
+    }    
   },
   "defaultProject": "ng-fabric-demo"
 }
