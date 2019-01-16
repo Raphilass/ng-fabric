@@ -111,8 +111,6 @@ export class DropdownComponent extends FabricInputComponent {
   @Output()
   change: EventEmitter<IComponentEvent> = new EventEmitter();
 
-  private _multiSelectArray: IDropdownOption[] = [];
-
   /**
    * Callback for when the input value changes.
    */
@@ -125,10 +123,11 @@ export class DropdownComponent extends FabricInputComponent {
 
       // taking out?
       if (!newValue.selected) {
-        this.selectedKeys = this.selectedKeys.filter(x => x !== newValue.key);
+        let keys:any = this.selectedKeys 
+        this.selectedKeys = keys.filter(x => x !== newValue.key);
       }
       else {
-        const _clonedArray = this.selectedKeys ? this.selectedKeys.slice() : [];
+        const _clonedArray: any = this.selectedKeys ? this.selectedKeys.slice() : [];
         _clonedArray.push(newValue.key);
         this.selectedKeys = _clonedArray;
       }
@@ -150,8 +149,8 @@ export class DropdownComponent extends FabricInputComponent {
   }
 
   onModelValueChanged = (val: IDropdownOption | string | number | string[] | number[]) => {
-    if(this.multiSelect){
-    this.selectedKeys = val as any;
+    if (this.multiSelect) {
+      this.selectedKeys = val as any;
     } else {
       this.selectedKey = val as any;
     }

@@ -34,7 +34,7 @@ import {
   PanelFooterDirective,
   PanelNavigationDirective
 } from "./panel/panel-directives";
-import { NgReactProxyModule } from "@eswarpr/ng-react-proxy";
+var NgReactProxyModule = require("@eswarpr/ng-react-proxy/dist/index");
 import { TextFieldLabelDirective } from "./text-field/text-field-directives";
 
 @NgModule({
