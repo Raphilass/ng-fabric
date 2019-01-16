@@ -16,7 +16,9 @@ import {
   PanelType,
   Panel,
   DayOfWeek,
-  IDatePickerStrings
+  IDatePickerStrings,
+  IDialogContentProps,
+  DialogType
 } from "office-ui-fabric-react";
 import { IComponentEvent } from "@eswarpr/ng-react-proxy/src/component-event";
 import { NormalPeoplePickerComponent } from "packages/ng-fabric/src/lib/normal-people-picker/normal-people-picker.component";
@@ -25,7 +27,7 @@ import { delay, map } from "rxjs/operators";
 import { people } from "./PickerExampleData";
 import { IComboBoxOptionClassNames } from "office-ui-fabric-react/lib/components/ComboBox/ComboBox.classNames";
 import { NgForm } from "@angular/forms";
-import { TextFieldComponent } from "../../../ng-fabric/src/lib/text-field/text-field.component";
+// import { TextFieldComponent } from "../../../ng-fabric/src/lib/text-field/text-field.component";
 import { number } from "prop-types";
 
 const _datePickerStrings: IDatePickerStrings = {
@@ -45,14 +47,30 @@ const _datePickerStrings: IDatePickerStrings = {
   closeButtonAriaLabel: 'Close date picker'
 };
 
-
-
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
+
+  /* modal */
+
+_showModal:boolean = false;
+private closeModal(){
+  console.log("modal close");
+  this._showModal = true;
+}
+dialogContentPros:IDialogContentProps = {
+  type:DialogType.normal,
+  title:"Modal",
+  subText:"Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails."
+}
+
+showDialog(){
+  this._showModal = true;
+}
+  /** ************ */
 
 _lower:number = 0;
 _datePicked:Date;
@@ -74,8 +92,8 @@ _handleSetDropdownSingle(){
     this._name = "I have changed"
   }
 
-  @ViewChild("txtbox")
-  private _txtBox:TextFieldComponent
+  // @ViewChild("txtbox")
+  // private _txtBox:TextFieldComponent
 
   StartDate1:Date;
 
@@ -186,7 +204,7 @@ _handleSetDropdownSingle(){
     this._panelOpen = true;
   }
 
-  _buttonClick = () => alert("Hello World");
+  // _buttonClick = () => alert("Hello World");
   
   _panelDismissed = () => this._panelOpen = false;
 }

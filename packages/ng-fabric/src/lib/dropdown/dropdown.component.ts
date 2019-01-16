@@ -123,7 +123,7 @@ export class DropdownComponent extends FabricInputComponent {
 
       // taking out?
       if (!newValue.selected) {
-        let keys:any = this.selectedKeys 
+        let keys: any = this.selectedKeys
         this.selectedKeys = keys.filter(x => x !== newValue.key);
       }
       else {
@@ -132,18 +132,30 @@ export class DropdownComponent extends FabricInputComponent {
         this.selectedKeys = _clonedArray;
       }
 
+      if (this.change) {
+        this.change.emit({
+          arguments: [this.selectedKeys]
+        });
+        this.onSelect.emit({
+          arguments: [this.selectedKeys]
+        });
+      }
+
     } else {
+      // single selection - selectedKey
       this.selectedKey = newValue.key
+
+      if (this.change) {
+        this.change.emit({
+          arguments: [this.selectedKey]
+        });
+        this.onSelect.emit({
+          arguments: [this.selectedKey]
+        });
+      }
     }
 
-    if (this.change) {
-      this.change.emit({
-        arguments: [newValue]
-      });
-      this.onSelect.emit({
-        arguments: [newValue]
-      });
-    }
+
 
 
   }
