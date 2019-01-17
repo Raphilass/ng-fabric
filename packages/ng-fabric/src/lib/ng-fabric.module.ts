@@ -24,6 +24,10 @@ import { TextFieldComponent } from "./text-field/text-field.component";
 import { CheckboxComponent } from "./checkbox/checkbox.component";
 import { ChoiceGroupComponent } from "./choice-group/choice-group.component";
 import { ComboBoxComponent } from "./combo-box/combo-box.component";
+import { DropdownComponent } from './dropdown/dropdown.component';
+import { SearchboxComponent } from './searchbox/searchbox.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import { SliderComponent } from './slider/slider.component';
 import {
   PanelHeaderDirective,
   PanelFooterContentDirective,
@@ -38,6 +42,8 @@ import {
 } from "./text-field/text-field-directives";
 import { NgReactProxyModule } from "@eswarpr/ng-react-proxy-helpers";
 import { ButtonTextDirective } from "./base-button";
+import { DialogComponent } from './dialog/dialog.component';
+import { DetailsListComponent } from './details-list/details-list.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +66,10 @@ import { ButtonTextDirective } from "./base-button";
     CheckboxComponent,
     ChoiceGroupComponent,
     ComboBoxComponent,
+    DropdownComponent,
+    SearchboxComponent,
+    DatePickerComponent,
+    SliderComponent,
     PanelHeaderDirective,
     PanelFooterContentDirective,
     PanelFooterDirective,
@@ -68,7 +78,9 @@ import { ButtonTextDirective } from "./base-button";
     TextFieldDescriptionDirective,
     TextFieldPrefixDirective,
     TextFieldSuffixDirective,
-    ButtonTextDirective
+    ButtonTextDirective,
+    DialogComponent,
+    DetailsListComponent
   ],
   imports: [CommonModule, NgReactProxyModule],
   exports: [
@@ -91,6 +103,10 @@ import { ButtonTextDirective } from "./base-button";
     CheckboxComponent,
     ChoiceGroupComponent,
     ComboBoxComponent,
+    DropdownComponent,
+    SearchboxComponent,
+    DatePickerComponent,
+    SliderComponent,
     PanelHeaderDirective,
     PanelFooterContentDirective,
     PanelFooterDirective,
@@ -99,7 +115,9 @@ import { ButtonTextDirective } from "./base-button";
     TextFieldDescriptionDirective,
     TextFieldPrefixDirective,
     TextFieldSuffixDirective,
-    ButtonTextDirective
+    ButtonTextDirective,
+    DialogComponent,
+    DetailsListComponent
   ]
 })
 export class NgFabricModule {}

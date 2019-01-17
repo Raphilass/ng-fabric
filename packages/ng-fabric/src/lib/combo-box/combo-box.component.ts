@@ -193,7 +193,7 @@ export class ComboBoxComponent extends FabricInputComponent {
     index?: number,
     value?: string
   ) => {
-    this.onViewValueChanged(option);
+    this.onModelValueChanged(option);
     if (this.change) {
       this.change.emit({
         arguments: [option]
