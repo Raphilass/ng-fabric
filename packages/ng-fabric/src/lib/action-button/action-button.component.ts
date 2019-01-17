@@ -10,7 +10,8 @@ import { HOST_COMPONENT_TEMPLATE } from "../host-component-template";
 
 @Component({
   selector: "fabric-action-button",
-  templateUrl: "../base-button-template.html"
+  templateUrl: "../base-button-template.html",  
+  providers: [HostDataProvider]
 })
 @ReactComponentType(ActionButton)
 export class ActionButtonComponent extends BaseButton {}

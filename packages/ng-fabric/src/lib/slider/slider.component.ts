@@ -48,11 +48,13 @@ export class SliderComponent extends FabricInputComponent {
 
   @Input()
   @ReactComponentProp()
-  showValue:boolean
+  showValue:boolean;
 
   @Input()
-  @ReactComponentProp()
-  value:number
+  @ReactComponentProp({
+    enableExplicitChangeDetection: true
+  })
+  value:number;
 
   
   @Input()
@@ -78,6 +80,13 @@ export class SliderComponent extends FabricInputComponent {
   @ReactComponentProp()
   disabled:boolean;
 
+  @Input()
+  @ReactComponentProp()
+  theme:ITheme;
+
+  @Input()
+  @ReactComponentProp()
+  vertical:boolean;
 
   /**
    * When the input value changes.
@@ -89,10 +98,11 @@ export class SliderComponent extends FabricInputComponent {
    * Callback for when the input value changes.
    */
   @ReactComponentProp()
-  private onChange = (newValue) => {
+  private onChange = (newValue:number) => {
     // call writevalue to allow for ngModel
     // updates
-    this.onModelValueChanged(newValue);
+    console.log(this);
+    this.onViewValueChanged(newValue);
     if (this.change) {
       this.change.emit({
         arguments: [newValue]
@@ -100,16 +110,10 @@ export class SliderComponent extends FabricInputComponent {
     }
   }
 
-  @Input()
-  @ReactComponentProp()
-  theme:ITheme;
-
-  @Input()
-  @ReactComponentProp()
-  vertical:boolean;
-
-
   onModelValueChanged = (val: any) => {
-    this.value = val;
+    if(val){
+      this.value = val;
+    }
+    
   }
 }

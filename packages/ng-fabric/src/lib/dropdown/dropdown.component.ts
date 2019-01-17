@@ -146,6 +146,5 @@ export class DropdownComponent extends FabricInputComponent {
     } else {
       this.selectedKey = val as any;
     }
-  }
-
+  };
 }
