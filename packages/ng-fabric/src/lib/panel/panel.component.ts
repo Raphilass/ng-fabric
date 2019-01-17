@@ -14,7 +14,7 @@ import {
   ViewContainerRef
 } from "@angular/core";
 import { FabricComponent } from "../fabric-component";
-import { ReactComponentType, ReactComponentProp } from "../../lib/imports";
+import { ReactComponentType, ReactComponentProp } from "@eswarpr/ng-react-proxy";
 import {
   Panel,
   PanelType,

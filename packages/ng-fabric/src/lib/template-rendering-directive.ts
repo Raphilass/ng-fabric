@@ -4,28 +4,37 @@ import {
   Host,
   OnChanges,
   AfterViewInit,
-  OnInit
+  OnInit,
+  Injectable
 } from "@angular/core";
 import { HostDataProvider } from "@eswarpr/ng-react-proxy";
+import "reflect-metadata";
 
 /**
  * Represents a base class that implements rendering based
  * on a host view
  */
-export abstract class TemplateRenderingDirective
-  implements OnChanges, OnInit {
+@Injectable()
+export abstract class TemplateRenderingDirective implements OnChanges, OnInit {
   /**
    * Initializes a new instance of this class
    */
   constructor(
     private templateRef: TemplateRef<any>,
-    private hostDataProvider: HostDataProvider,
-    private containerName: string
+    @Host() private hostDataProvider: HostDataProvider
   ) {}
 
   private updateView() {
-    if (this.hostDataProvider && this.templateRef) {
-      this.hostDataProvider.setTemplateForContainer(this.containerName, this.templateRef);
+    // get the container name from the metadata
+    const _containerName = Reflect.getMetadata(
+      "templates:containerName",
+      this.constructor
+    );
+    if (_containerName && this.hostDataProvider && this.templateRef) {
+      this.hostDataProvider.setTemplateForContainer(
+        _containerName,
+        this.templateRef
+      );
     }
   }
   ngOnChanges() {

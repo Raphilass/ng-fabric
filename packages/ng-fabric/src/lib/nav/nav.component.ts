@@ -10,7 +10,7 @@ import {
   EventEmitter,
   TemplateRef
 } from "@angular/core";
-import { ReactComponentType, ReactComponentProp } from "../../lib/imports";
+import { ReactComponentType, ReactComponentProp } from "@eswarpr/ng-react-proxy";
 import { Nav, INavLinkGroup, INavLink } from "office-ui-fabric-react";
 import { FabricComponent } from "../fabric-component";
 import { HOST_COMPONENT_TEMPLATE } from "../host-component-template";

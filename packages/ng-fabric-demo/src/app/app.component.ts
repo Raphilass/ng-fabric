@@ -11,7 +11,10 @@ import {
   IBreadcrumbItem,
   IChoiceGroupOptionProps,
   IChoiceGroupOption,
-  IComboBoxOption
+  IComboBoxOption,
+  IDropdownOption,
+  IContextualMenuProps,
+  IContextualMenuItem
 } from "office-ui-fabric-react";
 import { IComponentEvent } from "@eswarpr/ng-react-proxy/src/component-event";
 import { NormalPeoplePickerComponent } from "packages/ng-fabric/src/lib/normal-people-picker/normal-people-picker.component";
@@ -90,16 +93,27 @@ export class AppComponent {
     }
   ];
 
-  _refreshCount = 0;
-
-  _panelOpen = false;
-
-  _openPanel()  {
-    this._refreshCount++;
-    this._panelOpen = true;
+  _itemClick(args) {
+    alert("clicked!");
   }
 
-  _buttonClick = () => alert("Hello World");
-  
-  _panelDismissed = () => this._panelOpen = false;
+  _rows = Array(30).fill(0);
+
+  _getMenuProps = index => {
+    const _array = [1, 2, 3, 4];
+    const _items = [];
+    _array.forEach(x =>
+      _items.push({
+        key: x,
+        text: `Menu ${index} ${x}`,
+        iconProps: {
+          iconName: "Add"
+        }
+      })
+    );
+
+    return {
+      items: _items
+    };
+  };
 }

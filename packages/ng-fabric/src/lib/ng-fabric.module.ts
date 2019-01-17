@@ -24,20 +24,13 @@ import { TextFieldComponent } from "./text-field/text-field.component";
 import { CheckboxComponent } from "./checkbox/checkbox.component";
 import { ChoiceGroupComponent } from "./choice-group/choice-group.component";
 import { ComboBoxComponent } from "./combo-box/combo-box.component";
-import {
-  PanelHeaderDirective,
-  PanelFooterContentDirective,
-  PanelFooterDirective,
-  PanelNavigationDirective
-} from "./panel/panel-directives";
-import {
-  TextFieldLabelDirective,
-  TextFieldDescriptionDirective,
-  TextFieldPrefixDirective,
-  TextFieldSuffixDirective
-} from "./text-field/text-field-directives";
 import { NgReactProxyModule } from "@eswarpr/ng-react-proxy-helpers";
-import { ButtonTextDirective } from "./base-button";
+import { PANEL_RENDERING_DIRECTIVES } from "./panel/panel-directives";
+import { BUTTON_RENDERING_DIRECTIVES } from "./button-directives";
+import { TEXTFIELD_RENDERING_DIRECTIVES } from "./text-field/text-field-directives";
+import { CHECKBOX_RENDERING_DIRECTIVES } from "./checkbox/check-box-directives";
+import { BREADCRUMB_RENDERING_DIRECTIVES } from "./breadcrumb/breadcrumb-directives";
+import { DropdownComponent } from "./dropdown/dropdown.component";
 
 @NgModule({
   declarations: [
@@ -60,15 +53,12 @@ import { ButtonTextDirective } from "./base-button";
     CheckboxComponent,
     ChoiceGroupComponent,
     ComboBoxComponent,
-    PanelHeaderDirective,
-    PanelFooterContentDirective,
-    PanelFooterDirective,
-    PanelNavigationDirective,
-    TextFieldLabelDirective,
-    TextFieldDescriptionDirective,
-    TextFieldPrefixDirective,
-    TextFieldSuffixDirective,
-    ButtonTextDirective
+    PANEL_RENDERING_DIRECTIVES,
+    TEXTFIELD_RENDERING_DIRECTIVES,
+    BUTTON_RENDERING_DIRECTIVES,
+    CHECKBOX_RENDERING_DIRECTIVES,
+    BREADCRUMB_RENDERING_DIRECTIVES,
+    DropdownComponent
   ],
   imports: [CommonModule, NgReactProxyModule],
   exports: [
@@ -91,15 +81,12 @@ import { ButtonTextDirective } from "./base-button";
     CheckboxComponent,
     ChoiceGroupComponent,
     ComboBoxComponent,
-    PanelHeaderDirective,
-    PanelFooterContentDirective,
-    PanelFooterDirective,
-    PanelNavigationDirective,
-    TextFieldLabelDirective,
-    TextFieldDescriptionDirective,
-    TextFieldPrefixDirective,
-    TextFieldSuffixDirective,
-    ButtonTextDirective
+    DropdownComponent,
+    PANEL_RENDERING_DIRECTIVES,
+    TEXTFIELD_RENDERING_DIRECTIVES,
+    BUTTON_RENDERING_DIRECTIVES,
+    CHECKBOX_RENDERING_DIRECTIVES,
+    BREADCRUMB_RENDERING_DIRECTIVES
   ]
 })
 export class NgFabricModule {}

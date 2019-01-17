@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 import { HOST_COMPONENT_TEMPLATE } from "../host-component-template";
 import { FabricComponent } from "../fabric-component";
-import { ReactComponentProp } from "../../lib/imports";
+import { ReactComponentProp } from "@eswarpr/ng-react-proxy";
 import { ICommandBarItemProps, ICommandBarData, IButtonProps } from "office-ui-fabric-react";
 
 /**

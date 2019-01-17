@@ -5,7 +5,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { HOST_COMPONENT_TEMPLATE } from "../host-component-template";
 import { FabricComponent } from "../fabric-component";
-import { ReactComponentProp, ReactComponentType } from "../imports";
+import { ReactComponentProp, ReactComponentType } from "@eswarpr/ng-react-proxy";
 import { RatingSize, Rating } from "office-ui-fabric-react";
 
 /**

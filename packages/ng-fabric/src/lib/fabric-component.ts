@@ -5,7 +5,7 @@
 import {
   ReactComponentHost,
   ReactComponentProp
-} from "./imports";
+} from "@eswarpr/ng-react-proxy";
 import {
   ViewChild,
   ElementRef,

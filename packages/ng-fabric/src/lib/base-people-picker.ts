@@ -19,7 +19,7 @@ import {
   ISuggestionModel,
   IPersonaSharedProps
 } from "office-ui-fabric-react";
-import { IComponentEvent, ReactComponentProp } from "./imports";
+import { IComponentEvent, ReactComponentProp } from "@eswarpr/ng-react-proxy";
 import { Observable } from "rxjs";
 import { FabricInputComponent } from "./fabric-input-component";
 

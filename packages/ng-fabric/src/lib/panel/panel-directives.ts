@@ -1,6 +1,7 @@
 import { Directive, TemplateRef, Host } from "@angular/core";
 import { TemplateRenderingDirective } from "../template-rendering-directive";
 import { HostDataProvider } from "@eswarpr/ng-react-proxy";
+import { RenderingContainerName } from "../decorators";
 
 /**
  * Represents a directive that can be used to configure template
@@ -9,17 +10,8 @@ import { HostDataProvider } from "@eswarpr/ng-react-proxy";
 @Directive({
   selector: "[panelFooterContent]"
 })
-export class PanelFooterContentDirective extends TemplateRenderingDirective {
-  /**
-   * Initializes a new instance of the class
-   */
-  constructor(
-    templateRef: TemplateRef<any>,
-    @Host() hostDataProvider: HostDataProvider
-  ) {
-    super(templateRef, hostDataProvider, "panelFooterContent");
-  }
-}
+@RenderingContainerName("panelFooterContent")
+export class PanelFooterContentDirective extends TemplateRenderingDirective {}
 
 /**
  * Represents a directive that can be used render the header for
@@ -28,17 +20,8 @@ export class PanelFooterContentDirective extends TemplateRenderingDirective {
 @Directive({
   selector: "[panelHeader]"
 })
-export class PanelHeaderDirective extends TemplateRenderingDirective {
-  /**
-   * Initializes a new instance of the class
-   */
-  constructor(
-    templateRef: TemplateRef<any>,
-    @Host() hostDataProvider: HostDataProvider
-  ) {
-    super(templateRef, hostDataProvider, "panelHeader");
-  }
-}
+@RenderingContainerName("panelHeader")
+export class PanelHeaderDirective extends TemplateRenderingDirective {}
 
 /**
  * Represents a directive that can be used render the header for
@@ -47,29 +30,18 @@ export class PanelHeaderDirective extends TemplateRenderingDirective {
 @Directive({
   selector: "[panelNavigation]"
 })
-export class PanelNavigationDirective extends TemplateRenderingDirective {
-  /**
-   * Initializes a new instance of the class
-   */
-  constructor(
-    templateRef: TemplateRef<any>,
-    @Host() hostDataProvider: HostDataProvider
-  ) {
-    super(templateRef, hostDataProvider, "panelNavigation");
-  }
-}
+@RenderingContainerName("panelNavigation")
+export class PanelNavigationDirective extends TemplateRenderingDirective {}
 
 @Directive({
   selector: "[panelFooter]"
 })
-export class PanelFooterDirective extends TemplateRenderingDirective {
-  /**
-   * Initializes a new instance of the class
-   */
-  constructor(
-    templateRef: TemplateRef<any>,
-    @Host() hostDataProvider: HostDataProvider
-  ) {
-    super(templateRef, hostDataProvider, "panelFooter");
-  }
-}
+@RenderingContainerName("panelFooter")
+export class PanelFooterDirective extends TemplateRenderingDirective {}
+
+export const PANEL_RENDERING_DIRECTIVES = [
+  PanelHeaderDirective,
+  PanelFooterContentDirective,
+  PanelFooterDirective,
+  PanelNavigationDirective
+];

@@ -1,5 +1,17 @@
-import { ReactComponentHost, ReactComponentProp, HostDataProvider } from "./imports";
-import { Output, Input, EventEmitter, Directive, TemplateRef, Host } from "@angular/core";
+import {
+  ReactComponentHost,
+  ReactComponentProp,
+  HostDataProvider
+} from "@eswarpr/ng-react-proxy";
+import {
+  Output,
+  Input,
+  EventEmitter,
+  Directive,
+  TemplateRef,
+  Host,
+  Injectable
+} from "@angular/core";
 import {
   IButton,
   IButtonStyles,
@@ -8,34 +20,16 @@ import {
 import { FabricComponent } from "./fabric-component";
 import { ITheme } from "@uifabric/styling";
 import { IIconProps } from "office-ui-fabric-react/lib/Icon";
-import { IContextualMenuProps } from "office-ui-fabric-react/lib/ContextualMenu";
+import { IContextualMenuProps, IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { IRenderFunction, IComponentAs } from "@uifabric/utilities";
 import { TemplateRenderingDirective } from "./template-rendering-directive";
-
-/**
- * Represents a directive that can be used to configure template
- * for text field description
- */
-@Directive({
-  selector: "[buttonText]"
-})
-export class ButtonTextDirective extends TemplateRenderingDirective {
-  /**
-   * Initializes a new instance of the class
-   */
-  constructor(
-    templateRef: TemplateRef<any>,
-    @Host() hostDataProvider: HostDataProvider
-  ) {
-    super(templateRef, hostDataProvider, "text");
-  }
-}
+import { RenderingContainerName } from "./decorators";
 
 // Copyright (c) 2018 Eswar Prakash
 //
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
-
+@Injectable()
 export abstract class BaseButton extends FabricComponent {
   /**
    * If provided, this component will be rendered as an anchor.
@@ -95,13 +89,28 @@ export abstract class BaseButton extends FabricComponent {
   @Input()
   @ReactComponentProp()
   iconProps: IIconProps;
+
+  /**
+   * Specifies the backing field for the button menu props
+   */
+  _menuProps: IContextualMenuProps;
+
   /**
    * Props for button menu. Providing this will default to showing the menu icon. See menuIconProps for overriding
    * how the default icon looks. Providing this in addition of onClick and setting the split property to true will render a SplitButton.
    */
   @Input()
   @ReactComponentProp()
-  menuProps: IContextualMenuProps;
+  get menuProps(): IContextualMenuProps {
+    return this._menuProps;
+  }
+  set menuProps(val: IContextualMenuProps) {
+    if (val && val.items) {
+      val.items.forEach(x => (x.onClick = this._menuItemClick.bind(this)));
+    }
+    this._menuProps = val;
+  }
+
   /**
    * Whether the button can have focus in disabled mode
    */
@@ -170,4 +179,24 @@ export abstract class BaseButton extends FabricComponent {
   @Output()
   @ReactComponentProp()
   onClick: EventEmitter<any> = new EventEmitter();
+
+  /**
+   * Raised when a menu item is clicked
+   */
+  @Output()
+  itemClick: EventEmitter<IContextualMenuItem> = new EventEmitter();
+
+  /**
+   * Handles the click event of the menu item in the underlying React component
+   */
+  private _menuItemClick(ev: React.MouseEvent | React.KeyboardEvent, item?: IContextualMenuItem) {
+    if (this.itemClick) {
+      this.itemClick.emit(item);
+    }
+  }
+
+  constructor(private hostDataProvider: HostDataProvider) {
+    super();
+    this.hostDataProvider.setComponentHost(this);
+  }
 }

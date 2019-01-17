@@ -3,11 +3,11 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 import { Component, OnInit, Input } from "@angular/core";
-import { ReactComponentHost, ReactComponentType } from "../../lib/imports";
+import { ReactComponentHost, ReactComponentType } from "@eswarpr/ng-react-proxy";
 import { FabricComponent } from "../fabric-component";
 import { Label } from "office-ui-fabric-react";
 import { HOST_COMPONENT_TEMPLATE } from "../host-component-template";
-import { ReactComponentProp } from "../../lib/imports";
+import { ReactComponentProp } from "@eswarpr/ng-react-proxy";
 
 /**
  * Labels give a name or title to a component or group of components. Labels should be in close proximity to the
