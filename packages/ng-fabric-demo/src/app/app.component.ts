@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from "@angular/core";
+import { Component, ViewChild, AfterViewInit, OnInit } from "@angular/core";
 import {
   IButton,
   IIconProps,
@@ -18,7 +18,10 @@ import {
   DayOfWeek,
   IDatePickerStrings,
   IDialogContentProps,
-  DialogType
+  DialogType,
+  IColumn,
+  DetailsListLayoutMode,
+  SelectionMode
 } from "office-ui-fabric-react";
 import { IComponentEvent } from "@eswarpr/ng-react-proxy/src/component-event";
 import { NormalPeoplePickerComponent } from "packages/ng-fabric/src/lib/normal-people-picker/normal-people-picker.component";
@@ -52,7 +55,59 @@ const _datePickerStrings: IDatePickerStrings = {
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  private _items: any[] = [];
+
+  ngOnInit(): void {
+    for (let i = 0; i < 200; i++) {
+      this._items.push({
+        key: i,
+        name: 'Item ' + i,
+        value: i
+      });
+    }
+  }
+
+  private _onItemInvoked = (item: any): void => {
+    alert(`Item invoked: ${item.name}`);
+  };
+
+  private _activeItemChanged = (item:any):void =>{
+    console.log("ITEM CHANGE", item)
+  }
+
+
+  private _selectionMode:SelectionMode = SelectionMode.single;
+
+private _mode = DetailsListLayoutMode.fixedColumns
+
+
+  private _columns: IColumn[] = [
+    {
+      key: 'column1',
+      name: 'Name',
+      fieldName: 'name',
+      minWidth: 100,
+      maxWidth: 200,
+      isResizable: true,
+      ariaLabel: 'Operations for name'
+    },
+    {
+      key: 'column2',
+      name: 'Value',
+      fieldName: 'value',
+      minWidth: 100,
+      maxWidth: 200,
+      isResizable: true,
+      ariaLabel: 'Operations for value'
+    }
+  ];
+
+
+
+
+
 
   /* modal */
 
@@ -72,15 +127,27 @@ showDialog(){
 }
   /** ************ */
 
-_lower:number = 0;
+_lower:number =60;
+_upper:number =95;
+
+_setSlider(){
+  this._lower = 55;
+}
+
+_changeSlider(args:any){
+  console.log(args)
+}
+
+
+
 _datePicked:Date;
 _name:string;
 
-DropDown1:string[];
+DropDown1:IDropdownOption[];
 DropDown2:string;
 
 _handleSetDropdown(){
-  this.DropDown1 = ["monday","tuesday"]
+  this.DropDown1 = [{key:"monday",text:"Monday"},{key:"tuesday",text:"Tuesday"}]
 }
 
 _handleSetDropdownSingle(){

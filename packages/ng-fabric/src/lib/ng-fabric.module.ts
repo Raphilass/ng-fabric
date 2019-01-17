@@ -43,6 +43,7 @@ import {
 import { NgReactProxyModule } from "@eswarpr/ng-react-proxy-helpers";
 import { ButtonTextDirective } from "./base-button";
 import { DialogComponent } from './dialog/dialog.component';
+import { DetailsListComponent } from './details-list/details-list.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { DialogComponent } from './dialog/dialog.component';
     TextFieldPrefixDirective,
     TextFieldSuffixDirective,
     ButtonTextDirective,
-    DialogComponent
+    DialogComponent,
+    DetailsListComponent
   ],
   imports: [CommonModule, NgReactProxyModule],
   exports: [
@@ -114,7 +116,8 @@ import { DialogComponent } from './dialog/dialog.component';
     TextFieldPrefixDirective,
     TextFieldSuffixDirective,
     ButtonTextDirective,
-    DialogComponent
+    DialogComponent,
+    DetailsListComponent
   ]
 })
 export class NgFabricModule {}
