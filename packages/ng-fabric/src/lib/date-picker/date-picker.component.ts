@@ -1,12 +1,38 @@
-import { Component, ElementRef, ViewChild, Input, EventEmitter, Output } from '@angular/core';
-import { DatePicker, IDatePickerStrings, DayOfWeek, FirstWeekOfYear, ICalendarProps, ICalloutProps, IRefObject, IDatePicker, ICalendarFormatDateCallbacks, ITheme } from 'office-ui-fabric-react';
-import { ReactComponentType, ReactComponentHost, ReactComponentProp, IComponentEvent } from '@eswarpr/ng-react-proxy';
-import { HOST_COMPONENT_TEMPLATE } from '../host-component-template';
-import { FabricInputComponent } from '../fabric-input-component';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  Input,
+  EventEmitter,
+  Output
+} from "@angular/core";
+import {
+  DatePicker,
+  IDatePickerStrings,
+  DayOfWeek,
+  FirstWeekOfYear,
+  ICalendarProps,
+  ICalloutProps,
+  IRefObject,
+  IDatePicker,
+  ICalendarFormatDateCallbacks,
+  ITheme
+} from "office-ui-fabric-react";
+import {
+  ReactComponentType,
+  ReactComponentHost,
+  ReactComponentProp,
+  IComponentEvent
+} from "@eswarpr/ng-react-proxy";
+import { HOST_COMPONENT_TEMPLATE } from "../host-component-template";
+import { FabricInputComponent } from "../fabric-input-component";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
 
+/**
+ * The DatePicker component enables a user to pick a date value.
+ */
 @Component({
-  selector: 'fabric-date-picker',
+  selector: "fabric-date-picker",
   template: HOST_COMPONENT_TEMPLATE,
   styleUrls: [],
   providers: [
@@ -19,31 +45,11 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 @ReactComponentType(DatePicker)
 export class DatePickerComponent extends FabricInputComponent {
-
-  constructor() {
-    super();
-  }
-
   /**
-  * When the input value changes.
-  */
+   * When the input value changes.
+   */
   @Output()
   change: EventEmitter<IComponentEvent> = new EventEmitter();
-
-  // /**
-  // * Specifies the host element that will be used
-  // * to render the React component to
-  // */
-  // @ViewChild("host")
-  // _host: ElementRef;
-
-  // /**
-  //  * Gets the native element that will host the React
-  //  * component
-  //  */
-  // getHostElement() {
-  //   return this._host;
-  // }
 
   @Input()
   @ReactComponentProp()
@@ -65,6 +71,9 @@ export class DatePickerComponent extends FabricInputComponent {
   @ReactComponentProp()
   calendarProps: ICalendarProps;
 
+  /**
+   * Pass callout props to callout component
+   */
   @Input()
   @ReactComponentProp()
   calloutProps: ICalloutProps;
@@ -72,97 +81,6 @@ export class DatePickerComponent extends FabricInputComponent {
   @Input()
   @ReactComponentProp()
   className: string;
-
-  // @Input()
-  // @ReactComponentProp()
-  // componentRef: IRefObject<IDatePicker>;
-
-  @Input()
-  @ReactComponentProp()
-  dateTimeFormatter:ICalendarFormatDateCallbacks;
-
-  @Input()
-  @ReactComponentProp()
-  disableAutoFocus: boolean;
-
-  @Input()
-  @ReactComponentProp()
-  disabled: boolean
-
-  @Input()
-  @ReactComponentProp()
-  firstDayOfWeek: DayOfWeek;
-
-  @Input()
-  @ReactComponentProp()
-  firstWeekOfYear: FirstWeekOfYear;
-
-  // @ReactComponentProp()
-  // private formatDate = (date:Date) => {
-
-  // }
-
-  @Input()
-  @ReactComponentProp()
-  highlightCurrentMonth: boolean;
-
-  @Input()
-  @ReactComponentProp()
-  highlightSelectedMonth: boolean;
-
-  @Input()
-  @ReactComponentProp()
-  initialPickerDate: Date;
-
-  @Input()
-  @ReactComponentProp()
-  isMonthPickerVisible: boolean;
-
-  @Input()
-  @ReactComponentProp()
-  isRequired: boolean;
-
-  @Input()
-  @ReactComponentProp()
-  label:string;
-
-  @Input()
-  @ReactComponentProp()
-  maxDate: Date;
-
-  @Input()
-  @ReactComponentProp()
-  minDate: Date;
-
-  @Output()
-  @ReactComponentProp()
-  onAfterMenuDismiss:EventEmitter<void> = new EventEmitter();
-
-
-  /**
-   * Callback for when the input value changes.
-   */
-  @ReactComponentProp()
-  private onSelectDate = (
-    newValue:React.FormEvent<Date>
-    ) => {
-    // call writevalue to allow for ngModel
-    // updates
-    // this.writeValue(newValue);
-    this.onModelValueChanged(newValue);
-    if (this.change) {
-      this.change.emit({
-        arguments: [newValue]
-      });
-    }
-  }
-  onModelValueChanged = (val) => this.value = val
-
-
- // @ReactComponentProp()
-  // private parseDateFromString = (date:string) => {
-
-  // }
 
   @Input()
   @ReactComponentProp()
@@ -191,14 +109,6 @@ export class DatePickerComponent extends FabricInputComponent {
   @Input()
   @ReactComponentProp()
   strings: IDatePickerStrings;
-  
-  // @Input()
-  // @ReactComponentProp()
-  // styles: boolean;
-
-  @Input()
-  @ReactComponentProp()
-  theme: ITheme;
 
   @Input()
   @ReactComponentProp()
@@ -209,8 +119,81 @@ export class DatePickerComponent extends FabricInputComponent {
   underlined: boolean;
 
   @Input()
-  @ReactComponentProp()
+  @ReactComponentProp({
+    enableExplicitChangeDetection: true
+  })
   value: Date;
- 
 
+  @Input()
+  @ReactComponentProp()
+  dateTimeFormatter: ICalendarFormatDateCallbacks;
+
+  @Input()
+  @ReactComponentProp()
+  disableAutoFocus: boolean;
+
+  @Input()
+  @ReactComponentProp()
+  disabled: boolean;
+
+  @Input()
+  @ReactComponentProp()
+  firstDayOfWeek: DayOfWeek;
+
+  @Input()
+  @ReactComponentProp()
+  firstWeekOfYear: FirstWeekOfYear;
+
+  @Input()
+  @ReactComponentProp()
+  highlightCurrentMonth: boolean;
+
+  @Input()
+  @ReactComponentProp()
+  highlightSelectedMonth: boolean;
+
+  @Input()
+  @ReactComponentProp()
+  initialPickerDate: Date;
+
+  @Input()
+  @ReactComponentProp()
+  isMonthPickerVisible: boolean;
+
+  @Input()
+  @ReactComponentProp()
+  isRequired: boolean;
+
+  @Input()
+  @ReactComponentProp()
+  label: string;
+
+  @Input()
+  @ReactComponentProp()
+  maxDate: Date;
+
+  @Input()
+  @ReactComponentProp()
+  minDate: Date;
+
+  @Output()
+  @ReactComponentProp()
+  onAfterMenuDismiss: EventEmitter<void> = new EventEmitter();
+
+  /**
+   * Callback for when the input value changes.
+   */
+  @ReactComponentProp()
+  private onSelectDate = (newValue: React.FormEvent<Date>) => {
+    // call writevalue to allow for ngModel
+    // updates
+    // this.writeValue(newValue);
+    this.onModelValueChanged(newValue);
+    if (this.change) {
+      this.change.emit({
+        arguments: [newValue]
+      });
+    }
+  };
+  onModelValueChanged = val => (this.value = val);
 }

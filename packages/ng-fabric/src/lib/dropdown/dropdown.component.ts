@@ -121,13 +121,14 @@ export class DropdownComponent extends FabricInputComponent {
     } else {
       _viewValue = newValue;
 
-    this.onViewValueChanged(_viewValue);
-    if (this.change) {
-      this.change.emit({
-        arguments: [_viewValue]
-      });
+      this.onViewValueChanged(_viewValue);
+      if (this.change) {
+        this.change.emit({
+          arguments: [_viewValue]
+        });
+      }
     }
-  }
+  };
 
   onModelValueChanged = (val: IDropdownOption | IDropdownOption[]) => {
     if (this.multiSelect) {
@@ -140,7 +141,9 @@ export class DropdownComponent extends FabricInputComponent {
             .filter(y => y.key === x.key)
             .forEach(y => (y.selected = true))
         );
-        this.options.filter(x => x.selected).forEach(item => _keys.push(item.key));
+        this.options
+          .filter(x => x.selected)
+          .forEach(item => _keys.push(item.key));
         this.selectedKeys = _keys;
       }
     } else {

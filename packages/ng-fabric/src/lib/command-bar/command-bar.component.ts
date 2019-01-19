@@ -1,8 +1,21 @@
+// Copyright (c) 2019 Eswar Prakash
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 import { HOST_COMPONENT_TEMPLATE } from "../host-component-template";
 import { FabricComponent } from "../fabric-component";
-import { ReactComponentProp } from "@eswarpr/ng-react-proxy";
-import { ICommandBarItemProps, ICommandBarData, IButtonProps } from "office-ui-fabric-react";
+import {
+  ReactComponentProp,
+  ReactComponentType
+} from "@eswarpr/ng-react-proxy";
+import {
+  ICommandBarItemProps,
+  ICommandBarData,
+  IButtonProps,
+  CommandBar
+} from "office-ui-fabric-react";
 
 /**
  * CommandBar is a surface that houses commands that operate on the content of the window, panel,
