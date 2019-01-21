@@ -92,12 +92,7 @@ export class CheckboxComponent extends FabricInputComponent {
         arguments: [checked]
       });
     }
-  }
+  };
 
   onModelValueChanged = val => (this.checked = val);
-
-  constructor(private hostDataProvider: HostDataProvider) {
-    super();
-    this.hostDataProvider.setComponentHost(this);
-  }
 }

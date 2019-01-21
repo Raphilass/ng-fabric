@@ -23,7 +23,6 @@
     "@eswarpr/ng-react-proxy": "file:../ng-react-proxy/eswarpr-ng-react-proxy-1.7.19.tgz",
     "@eswarpr/ng-react-proxy-helpers": "file:../ng-react-proxy-helpers/dist/ng-react-proxy-helpers/eswarpr-ng-react-proxy-helpers-1.7.19.tgz",
     "core-js": "^2.5.4",
-    "@eswarpr/ng-react-proxy": "^1.7.18",
     "office-ui-fabric-core": "^9.6.1",
     "office-ui-fabric-react": "^6.109.0",
     "react": "^16.6.3",

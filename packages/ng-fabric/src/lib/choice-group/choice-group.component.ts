@@ -55,11 +55,11 @@ export class ChoiceGroupComponent extends FabricInputComponent {
    * Change event
    */
   @Output()
-  @ReactComponentProp()
   change: EventEmitter<IComponentEvent> = new EventEmitter();
   /**
    * A callback for receiving a notification when the choice has been changed.
    */
+  @ReactComponentProp()
   onChange = (
     ev?: React.FormEvent<HTMLElement | HTMLInputElement>,
     option?: IChoiceGroupOption
