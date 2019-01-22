@@ -19,7 +19,7 @@ import {
   ISuggestionModel,
   IPersonaSharedProps
 } from "office-ui-fabric-react";
-import { IComponentEvent, ReactComponentProp } from "./imports";
+import { IComponentEvent, ReactComponentProp } from "@eswarpr/ng-react-proxy";
 import { Observable } from "rxjs";
 import { FabricInputComponent } from "./fabric-input-component";
 
@@ -211,7 +211,7 @@ export abstract class BasePeoplePickerComponent extends FabricInputComponent {
   @ReactComponentProp()
   onChange = (items?: Array<IPersonaSharedProps>) => {
     // ensure the form system knows
-    this.onModelValueChanged(items);
+    this.onViewValueChanged(items);
     if (this.change) {
       this.change.emit({
         arguments: [items]

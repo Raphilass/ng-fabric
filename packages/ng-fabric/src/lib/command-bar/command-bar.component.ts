@@ -1,8 +1,22 @@
+// Copyright (c) 2019 Eswar Prakash
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 import { HOST_COMPONENT_TEMPLATE } from "../host-component-template";
 import { FabricComponent } from "../fabric-component";
-import { ReactComponentProp, ReactComponentType } from "../../lib/imports";
-import { ICommandBarItemProps, ICommandBarData, IButtonProps, CommandBar } from "office-ui-fabric-react";
+import {
+  ReactComponentProp,
+  ReactComponentType
+} from "@eswarpr/ng-react-proxy";
+import {
+  ICommandBarItemProps,
+  ICommandBarData,
+  IButtonProps,
+  CommandBar
+} from "office-ui-fabric-react";
+import { IComponentEvent } from "@eswarpr/ng-react-proxy/src/component-event";
 
 /**
  * CommandBar is a surface that houses commands that operate on the content of the window, panel,
@@ -35,28 +49,36 @@ export class CommandBarComponent extends FabricComponent {
    * Function callback invoked when data has been grown.
    */
   @Output()
-  @ReactComponentProp()
-  onDataGrown: EventEmitter<ICommandBarItemProps> = new EventEmitter();
+  @ReactComponentProp({
+    name: "onDataGrown"
+  })
+  dataGrown: EventEmitter<IComponentEvent> = new EventEmitter();
   /**
    * Function callback invoked when data has been reduced.
    */
   @Output()
-  @ReactComponentProp()
-  onDataReduced: EventEmitter<ICommandBarItemProps> = new EventEmitter();
+  @ReactComponentProp({
+    name: "onDataReduced"
+  })
+  dataReduced: EventEmitter<IComponentEvent> = new EventEmitter();
   /**
    * Custom function to grow data if items are too small for the given space.
    * Return undefined if no more steps can be taken to avoid infinate loop.
    */
-  @Output()
-  @ReactComponentProp()
-  onGrowData: EventEmitter<ICommandBarData> = new EventEmitter();
+  @Input()
+  @ReactComponentProp({
+    enableExplicitChangeDetection: true
+  })
+  onGrowData: (data: ICommandBarData) => ICommandBarData;
   /**
    * Custom function to reduce data if items do not fit in given space. Return undefined
    * if no more steps can be taken to avoid infinate loop.
    */
-  @Output()
-  @ReactComponentProp()
-  onReduceData: EventEmitter<ICommandBarData> = new EventEmitter();
+  @Input()
+  @ReactComponentProp({
+    enableExplicitChangeDetection: true
+  })
+  onReduceData: (data: ICommandBarData) => ICommandBarData;
   /**
    * Props to be passed to overflow button.
    * If menuProps are passed through this prop, any items provided will be prepended to the top of the existing menu.

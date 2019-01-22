@@ -4,7 +4,7 @@
 // https://opensource.org/licenses/MIT
 import { Component, OnInit } from "@angular/core";
 import { HOST_COMPONENT_TEMPLATE } from "../host-component-template";
-import { ReactComponentHost } from "../../lib/imports";
+import { ReactComponentHost } from "@eswarpr/ng-react-proxy";
 import { FabricComponent } from "../fabric-component";
 import { IKeytipProps } from "office-ui-fabric-react";
 

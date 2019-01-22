@@ -1,6 +1,7 @@
 import { Directive, TemplateRef, Host } from "@angular/core";
 import { TemplateRenderingDirective } from "../template-rendering-directive";
 import { HostDataProvider } from "@eswarpr/ng-react-proxy";
+import { RenderingContainerName } from "../decorators";
 
 /**
  * Represents a directive that can be used to configure template
@@ -9,17 +10,8 @@ import { HostDataProvider } from "@eswarpr/ng-react-proxy";
 @Directive({
   selector: "[textFieldLabel]"
 })
-export class TextFieldLabelDirective extends TemplateRenderingDirective {
-  /**
-   * Initializes a new instance of the class
-   */
-  constructor(
-    templateRef: TemplateRef<any>,
-    @Host() hostDataProvider: HostDataProvider
-  ) {
-    super(templateRef, hostDataProvider, "labelTemplate");
-  }
-}
+@RenderingContainerName("labelTemplate")
+export class TextFieldLabelDirective extends TemplateRenderingDirective {}
 
 /**
  * Represents a directive that can be used to configure template
@@ -28,17 +20,8 @@ export class TextFieldLabelDirective extends TemplateRenderingDirective {
 @Directive({
   selector: "[textFieldDescription]"
 })
-export class TextFieldDescriptionDirective extends TemplateRenderingDirective {
-  /**
-   * Initializes a new instance of the class
-   */
-  constructor(
-    templateRef: TemplateRef<any>,
-    @Host() hostDataProvider: HostDataProvider
-  ) {
-    super(templateRef, hostDataProvider, "description");
-  }
-}
+@RenderingContainerName("description")
+export class TextFieldDescriptionDirective extends TemplateRenderingDirective {}
 
 /**
  * Represents a directive that can be used to configure template
@@ -47,17 +30,8 @@ export class TextFieldDescriptionDirective extends TemplateRenderingDirective {
 @Directive({
   selector: "[textFieldPrefix]"
 })
-export class TextFieldPrefixDirective extends TemplateRenderingDirective {
-  /**
-   * Initializes a new instance of the class
-   */
-  constructor(
-    templateRef: TemplateRef<any>,
-    @Host() hostDataProvider: HostDataProvider
-  ) {
-    super(templateRef, hostDataProvider, "prefix");
-  }
-}
+@RenderingContainerName("prefix")
+export class TextFieldPrefixDirective extends TemplateRenderingDirective {}
 
 /**
  * Represents a directive that can be used to configure template
@@ -66,15 +40,12 @@ export class TextFieldPrefixDirective extends TemplateRenderingDirective {
 @Directive({
   selector: "[textFieldSuffix]"
 })
-export class TextFieldSuffixDirective extends TemplateRenderingDirective {
-  /**
-   * Initializes a new instance of the class
-   */
-  constructor(
-    templateRef: TemplateRef<any>,
-    @Host() hostDataProvider: HostDataProvider
-  ) {
-    super(templateRef, hostDataProvider, "suffix");
-  }
-}
+@RenderingContainerName("suffix")
+export class TextFieldSuffixDirective extends TemplateRenderingDirective {}
 
+export const TEXTFIELD_RENDERING_DIRECTIVES = [
+  TextFieldLabelDirective,
+  TextFieldDescriptionDirective,
+  TextFieldPrefixDirective,
+  TextFieldSuffixDirective
+];

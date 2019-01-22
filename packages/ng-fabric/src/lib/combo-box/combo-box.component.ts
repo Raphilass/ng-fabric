@@ -87,7 +87,7 @@ export class ComboBoxComponent extends FabricInputComponent {
   @ReactComponentProp({
     name: "onScrollToItem"
   })
-  scrollToItem: (itemIndex: number) => void;
+  scrollToItem: EventEmitter<IComponentEvent> = new EventEmitter();
   /**
    * Whether the ComboBox auto completes. As the user is inputing text, it will be suggested potential matches from the list of options. If
    * the combo box is expanded, this will also scroll to the suggested option, and give it a selected style.

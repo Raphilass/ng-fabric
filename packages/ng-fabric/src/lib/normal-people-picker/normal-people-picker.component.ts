@@ -13,8 +13,8 @@ import {
   ICalloutProps
 } from "office-ui-fabric-react";
 import { BasePeoplePickerComponent } from "../base-people-picker";
-import { ReactComponentProp, ReactComponentType } from "../../lib/imports";
-import { IComponentEvent } from "../../lib/imports";
+import { ReactComponentProp, ReactComponentType } from "@eswarpr/ng-react-proxy";
+import { IComponentEvent } from "@eswarpr/ng-react-proxy";
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
 /**
  * PeoplePickers are used to pick recipients.

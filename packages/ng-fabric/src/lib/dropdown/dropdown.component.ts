@@ -19,8 +19,8 @@ import { NG_VALUE_ACCESSOR } from "@angular/forms";
 import { IKeytipProps, ITheme } from "office-ui-fabric-react";
 
 /**
-* Represents a dropdown component
-*/
+ * Represents a dropdown component
+ */
 @Component({
   selector: "fabric-dropdown",
   templateUrl: "./dropdown.component.html",
@@ -106,23 +106,27 @@ export class DropdownComponent extends FabricInputComponent {
       const _clonedArray = this.selectedKeys ? this.selectedKeys.slice() : [];
       if (!newValue.selected) {
         // remove the option from the list of selected keys
-        this.selectedKeys = (_clonedArray as Array<any>).filter(item => item !== newValue.key);
+        this.selectedKeys = (_clonedArray as Array<any>).filter(
+          item => item !== newValue.key
+        );
       } else {
         // add it as a new option to the list of selected keys
         (_clonedArray as Array<any>).push(newValue.key);
         this.selectedKeys = _clonedArray;
       }
-      this.options.filter(x => x.key === newValue.key).forEach(x => x.selected = newValue.selected);
+      this.options
+        .filter(x => x.key === newValue.key)
+        .forEach(x => (x.selected = newValue.selected));
       _viewValue = this.options.filter(x => x.selected);
     } else {
       _viewValue = newValue;
-    }
 
-    this.onViewValueChanged(_viewValue);
-    if (this.change) {
-      this.change.emit({
-        arguments: [_viewValue]
-      });
+      this.onViewValueChanged(_viewValue);
+      if (this.change) {
+        this.change.emit({
+          arguments: [_viewValue]
+        });
+      }
     }
   };
 
@@ -137,7 +141,9 @@ export class DropdownComponent extends FabricInputComponent {
             .filter(y => y.key === x.key)
             .forEach(y => (y.selected = true))
         );
-        this.options.filter(x => x.selected).forEach(item => _keys.push(item.key));
+        this.options
+          .filter(x => x.selected)
+          .forEach(item => _keys.push(item.key));
         this.selectedKeys = _keys;
       }
     } else {

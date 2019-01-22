@@ -68,9 +68,9 @@ export class ChoiceGroupComponent extends FabricInputComponent {
    * A callback for receiving a notification when the choice has been changed.
    */
   @ReactComponentProp()
-  private onChange = (
-    event:Event,
-    option: IChoiceGroupOption
+  onChange = (
+    ev?: React.FormEvent<HTMLElement | HTMLInputElement>,
+    option?: IChoiceGroupOption
   ) => {
     event.preventDefault();
     this.selectedKey = option.key

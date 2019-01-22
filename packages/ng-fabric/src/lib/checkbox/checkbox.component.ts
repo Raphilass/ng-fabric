@@ -3,18 +3,20 @@ import { HOST_COMPONENT_TEMPLATE } from "../host-component-template";
 import { FabricInputComponent } from "../fabric-input-component";
 import {
   ReactComponentType,
-  ReactComponentProp
+  ReactComponentProp,
+  HostDataProvider
 } from "@eswarpr/ng-react-proxy";
 import { Checkbox, IIconProps, IKeytipProps } from "office-ui-fabric-react";
-import { IComponentEvent } from "@eswarpr/ng-react-proxy/src/component-event";
+import { IComponentEvent } from "@eswarpr/ng-react-proxy";
 
 /**
  * Represents a checkbox control
  */
 @Component({
   selector: "fabric-checkbox",
-  template: HOST_COMPONENT_TEMPLATE,
-  styles: []
+  templateUrl: "./check-box.component.html",
+  styles: [],
+  providers: [HostDataProvider]
 })
 @ReactComponentType(Checkbox)
 export class CheckboxComponent extends FabricInputComponent {
@@ -91,5 +93,6 @@ export class CheckboxComponent extends FabricInputComponent {
       });
     }
   };
-  onModelValueChanged = (val) => this.checked = val;
+
+  onModelValueChanged = val => (this.checked = val);
 }

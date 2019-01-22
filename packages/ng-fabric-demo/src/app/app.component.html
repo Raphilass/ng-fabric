@@ -5,29 +5,11 @@
         <fabric-nav [groups]="_componentList"></fabric-nav>
       </div>
       <div class="ms-Grid-col ms-sm12 ms-md12 ms-lg10">
-
-        <form #form="ngForm">
-          <!-- <div *ngFor="let res of _results;let idx = index">
-            <fabric-choice-group [options]="_options" 
-              label="Select a response" 
-              (change)="_handleChoiceGroupChange($event)"
-              [(ngModel)]="res" name="choice{{idx}}"
-              >
-            </fabric-choice-group>
-            {{res}}
-            <fabric-dropdown [options]="_dropDownOptions" [multiSelect]="false" 
-            label="DDL xample" name="dropdown1"
-            [(ngModel)]="DropDown1" (change)="_handleDropdownChange($event)"></fabric-dropdown>
-          </div> -->
-          <div>
-            <fabric-label>Choose a person :</fabric-label>
-            <fabric-normal-people-picker [onResolveSuggestions]="_filterResults" searchingText="Searching for suggestions"></fabric-normal-people-picker>
-          </div>
-        </form>
-
-        <div>
-          {{form.value | json}}
-        </div>
+        <fabric-normal-people-picker
+          #peoplePicker
+          [(ngModel)]="_selectedPeople"
+        ></fabric-normal-people-picker>
+        {{ _selectedPeople | json}}
       </div>
     </div>
   </div>
