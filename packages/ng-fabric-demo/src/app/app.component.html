@@ -5,9 +5,11 @@
         <fabric-nav [groups]="_componentList"></fabric-nav>
       </div>
       <div class="ms-Grid-col ms-sm12 ms-md12 ms-lg10">
-        <ng-container *ngFor="let _item of _rows">
-            <fabric-default-button text="Test Button" [menuProps]="_getMenuProps(_item)" (onClick)="_menuButtonClick($event)" [split]="true" (itemClick)="_itemClick($event)"></fabric-default-button>
-        </ng-container>
+        <fabric-normal-people-picker
+          #peoplePicker
+          [(ngModel)]="_selectedPeople"
+        ></fabric-normal-people-picker>
+        {{ _selectedPeople | json}}
       </div>
     </div>
   </div>

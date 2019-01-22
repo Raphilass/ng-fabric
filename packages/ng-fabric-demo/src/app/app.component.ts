@@ -1,15 +1,17 @@
-import { Component, OnInit } from "@angular/core";
-import {
-  INavLinkGroup} from "office-ui-fabric-react";
+import { Component, OnInit, ViewChild, AfterViewInit } from "@angular/core";
+import { INavLinkGroup, IPersonaSharedProps } from "office-ui-fabric-react";
 import { NgForm } from "@angular/forms";
-
+import { people } from "./PickerExampleData";
+import { NormalPeoplePickerComponent } from "packages/ng-fabric/src/lib/normal-people-picker/normal-people-picker.component";
+import { of } from "rxjs";
+import { filter } from "rxjs/operators";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   /**
    * The list of components to present in the Nav
    * component
@@ -74,27 +76,37 @@ export class AppComponent {
     }
   ];
 
-  _itemClick() {
-    alert("clicked!");
+  /**
+   * Reference to the people picker on the page
+   */
+  @ViewChild("peoplePicker")
+  _peoplePicker: NormalPeoplePickerComponent;
+
+  /**
+   * Specifies the list of people selected in the people picker
+   */
+  _selectedPeople: Array<IPersonaSharedProps>;
+
+  /**
+   * Handles the AfterViewInit event of this component
+   */
+  ngAfterViewInit() {
+    this._peoplePicker.onResolveSuggestions = this._resolveSuggestions.bind(
+      this
+    );
   }
 
-  _rows = Array(30).fill(0);
-
-  _getMenuProps = index => {
-    const _array = [1, 2, 3, 4];
-    const _items = [];
-    _array.forEach(x =>
-      _items.push({
-        key: x,
-        text: `Menu ${index} ${x}`,
-        iconProps: {
-          iconName: "Add"
-        }
-      })
-    );
-
-    return {
-      items: _items
-    };
-  };
+  /**
+   * Resolves the people picker suggestions using the specified filter, if specified; or return
+   * a list of entities
+   */
+  _resolveSuggestions(
+    _filter?: string,
+    selectedItems?: Array<IPersonaSharedProps>
+  ) {
+    if (_filter) {
+      return people.filter(x => x.text.indexOf(_filter) > -1);
+    }
+    return of(people);
+  }
 }

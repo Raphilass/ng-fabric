@@ -210,7 +210,7 @@ export abstract class BasePeoplePickerComponent extends FabricInputComponent {
   @ReactComponentProp()
   onChange = (items?: Array<IPersonaSharedProps>) => {
     // ensure the form system knows
-    this.onModelValueChanged(items);
+    this.onViewValueChanged(items);
     if (this.change) {
       this.change.emit({
         arguments: [items]
