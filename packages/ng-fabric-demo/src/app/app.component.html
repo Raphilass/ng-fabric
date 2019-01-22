@@ -6,124 +6,29 @@
       </div>
       <div class="ms-Grid-col ms-sm12 ms-md12 ms-lg10">
 
-        <div>
-            <fabric-details-list
-            [items]="_items"
-            [columns]="_columns"
-            setKey="set"
-            [layoutMode]="_mode"
-            [selection]="this._selection"
-            [selectionPreservedOnEmptyClick]="true"
-            ariaLabelForSelectionColumn="Toggle selection"
-            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-            [onItemInvoked]="_onItemInvoked"
-            [selectionMode]="_selectionMode"
-            [onActiveItemChanged]="_activeItemChanged"
-          ></fabric-details-list>
-        </div>
-
-
-
-        <!-- <fabric-text-field [(ngModel)]="_text"></fabric-text-field>
-        <fabric-primary-button (onClick)="_buttonClick($event)" text="OK"></fabric-primary-button>
-
-        <h2>Search Box</h2>
-        <fabric-searchbox placeholder="Search by Title" [underlined]="true" ariaLabel="Search control"></fabric-searchbox> -->
-        <div>
-     
-        </div>
-        <div>
-          <h2>Slider</h2>
-          <div class="ms-Grid-row">
-            <div class="ms-Grid-col ms-sm12">
-              <fabric-label>Lower Conformance Target (min : 0 - max : {{_upper}})</fabric-label>
-              <fabric-slider [max]='100' [min]='0' [showValue]=true name="Lower" [(ngModel)]="_lower" (change)="_changeSlider($event)"></fabric-slider>
-              {{_lower}}
-            </div>
-            <div>
-              <fabric-primary-button (onClick)="_setSlider()" text="Set to 55" style="display: inline-block;margin-right: 15px;"></fabric-primary-button>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h2>Modal Dialog</h2>
-          <fabric-default-button (onClick)="showDialog()" text="Open Dialog"></fabric-default-button>
-          <fabric-dialog [hidden]="_showModal" (onDismiss)="closeModal" [dialogContentProps]="dialogContentPros"
-            [modalProps]="{
-            titleAriaId: 'myLabelId',
-            subtitleAriaId: 'mySubTextId',
-            isBlocking: false,
-            containerClassName: 'ms-dialogMainOverride'
-          }">
-            Dialog Content
-          </fabric-dialog>
-        </div>
-        <!-- <form #form="ngForm">      -->
-        <div>
-          <fabric-text-field #txtbox label="enter name" [(ngModel)]="_name" name="_name"></fabric-text-field>
-        </div>
-        <div>
-          <fabric-primary-button (onClick)="_handleSubmitForm()" text="Submit" style="display: inline-block;margin-right: 15px;"></fabric-primary-button>
-        </div>
-        <!-- </form> -->
-        <div>
-          <!-- {{form.value | json}} -->
-          <h2>variable</h2>
-          {{_name}}
-        </div>
-
-        <div><span>Dropdown Value : {{DropDown1 | json}}</span>
-          <fabric-dropdown [options]="_dropDownOptions" [multiSelect]="true" label="Multi-select Example" name="dropdown1"
-            [(ngModel)]="DropDown1"></fabric-dropdown>
-
-
+        <form #form="ngForm">
+          <!-- <div *ngFor="let res of _results;let idx = index">
+            <fabric-choice-group [options]="_options" 
+              label="Select a response" 
+              (change)="_handleChoiceGroupChange($event)"
+              [(ngModel)]="res" name="choice{{idx}}"
+              >
+            </fabric-choice-group>
+            {{res}}
+            <fabric-dropdown [options]="_dropDownOptions" [multiSelect]="false" 
+            label="DDL xample" name="dropdown1"
+            [(ngModel)]="DropDown1" (change)="_handleDropdownChange($event)"></fabric-dropdown>
+          </div> -->
           <div>
-            <fabric-primary-button (onClick)="_handleSetDropdown()" text="Submit" style="display: inline-block;margin-right: 15px;"></fabric-primary-button>
+            <fabric-label>Choose a person :</fabric-label>
+            <fabric-normal-people-picker [onResolveSuggestions]="_filterResults" searchingText="Searching for suggestions"></fabric-normal-people-picker>
           </div>
-        </div>
+        </form>
+
         <div>
-
-          <div>
-            <fabric-dropdown [options]="_dropDownOptions" label="Single value select example" name="dropdown1"
-              [(ngModel)]="DropDown2"></fabric-dropdown>
-            <span>Dropdown Value : {{DropDown2 | json}}</span>
-
-            <div>
-              <fabric-default-button (onClick)="_handleSetDropdownSingle()" text="Submit" style="display: inline-block;margin-right: 15px;"></fabric-default-button>
-            </div>
-          </div>
-          <div>
-
-            <fabric-panel [isOpen]="_panelOpen" (dismissed)="_panelDismissed($event)" [isFooterAtBottom]="true"
-              headerText="Header From Props">
-              This is panel content
-              <ng-container *panelFooterContent="let ctx">
-                <fabric-primary-button text="Submit"></fabric-primary-button>
-              </ng-container>
-              <ng-container *panelNavigation="let ctx">
-                Navigation
-              </ng-container>
-            </fabric-panel>
-            <fabric-primary-button text="Open Panel" (onClick)="_openPanel($event)"></fabric-primary-button>
-          </div>
-          <fabric-panel [isOpen]="_panelOpen" (dismissed)="_panelDismissed($event)" [isFooterAtBottom]="true"
-            headerText="Header From Props">
-            <fabric-text-field label="Hello World" suffix="@tsg.com" description="Text field description">
-            </fabric-text-field>
-            <ng-container *panelHeader="let ctx">
-              <span>This is a header</span>
-            </ng-container>
-            <ng-container *panelFooterContent="let ctx">
-              <fabric-primary-button text="Submit" (onClick)="_buttonClick($event)"></fabric-primary-button>
-            </ng-container>
-          </fabric-panel>
-          <fabric-primary-button text="Open Panel" (onClick)="_openPanel($event)">
-            <ng-container *buttonText="let ctx">
-              <span>{{ 'Changed Label ' + ctx?.text }}</span>
-            </ng-container>
-          </fabric-primary-button>
+          {{form.value | json}}
         </div>
       </div>
     </div>
   </div>
+</div>

@@ -33,6 +33,7 @@ export abstract class BasePeoplePickerComponent extends FabricInputComponent {
    * Returns the already selected items so the resolver can filter them out.
    * If used in conjunction with resolveDelay this will ony kick off after the delay throttle.
    */
+  @Input()
   @ReactComponentProp({
     enableExplicitChangeDetection: true
   })

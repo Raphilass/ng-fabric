@@ -13,6 +13,7 @@ import {
 } from "@eswarpr/ng-react-proxy";
 import { ChoiceGroup, IChoiceGroupOption } from "office-ui-fabric-react";
 import { FabricInputComponent } from "../fabric-input-component";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
 
 /**
  * Represents a Choice group component
@@ -20,7 +21,14 @@ import { FabricInputComponent } from "../fabric-input-component";
 @Component({
   selector: "fabric-choice-group",
   template: HOST_COMPONENT_TEMPLATE,
-  styles: []
+  styles: [],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: ChoiceGroupComponent
+    }
+  ]
 })
 @ReactComponentType(ChoiceGroup)
 export class ChoiceGroupComponent extends FabricInputComponent {
@@ -55,21 +63,34 @@ export class ChoiceGroupComponent extends FabricInputComponent {
    * Change event
    */
   @Output()
-  @ReactComponentProp()
   change: EventEmitter<IComponentEvent> = new EventEmitter();
   /**
    * A callback for receiving a notification when the choice has been changed.
    */
-  onChange = (
-    ev?: React.FormEvent<HTMLElement | HTMLInputElement>,
-    option?: IChoiceGroupOption
+  @ReactComponentProp()
+  private onChange = (
+    event:Event,
+    option: IChoiceGroupOption
   ) => {
-    this.onViewValueChanged(option);
+    event.preventDefault();
+    this.selectedKey = option.key
+
+    this.onViewValueChanged(option.key);
     if (this.change) {
       this.change.emit({
-        arguments: [option]
+        arguments: [option] 
       });
     }
   };
-  onModelValueChanged = (val) => this.selectedKey = val;
+
+  onModelValueChanged = (val: number | string | IChoiceGroupOption) => {
+    if (val) {
+      if (typeof val == "string" || typeof val == "number") {
+        this.selectedKey = val;
+      } else {
+        this.selectedKey = val.key;
+      }
+    }
+  };
+
 }
