@@ -34,6 +34,8 @@ import { DropdownComponent } from "./dropdown/dropdown.component";
 import { SearchboxComponent } from "./searchbox/searchbox.component";
 import { DatePickerComponent } from "./date-picker/date-picker.component";
 import { SliderComponent } from "./slider/slider.component";
+import { DetailsList } from "office-ui-fabric-react";
+import { DetailsListComponent } from "./details-list/details-list.component";
 @NgModule({
   declarations: [
     IconComponent,
@@ -63,7 +65,8 @@ import { SliderComponent } from "./slider/slider.component";
     BUTTON_RENDERING_DIRECTIVES,
     CHECKBOX_RENDERING_DIRECTIVES,
     BREADCRUMB_RENDERING_DIRECTIVES,
-    DropdownComponent
+    DropdownComponent,
+    DetailsListComponent
   ],
   imports: [CommonModule, NgReactProxyModule],
   exports: [
@@ -95,7 +98,8 @@ import { SliderComponent } from "./slider/slider.component";
     TEXTFIELD_RENDERING_DIRECTIVES,
     BUTTON_RENDERING_DIRECTIVES,
     CHECKBOX_RENDERING_DIRECTIVES,
-    BREADCRUMB_RENDERING_DIRECTIVES
+    BREADCRUMB_RENDERING_DIRECTIVES,
+    DetailsListComponent
   ]
 })
 export class NgFabricModule {}

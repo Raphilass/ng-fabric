@@ -7,6 +7,7 @@ import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { AppRoutingModule } from "./app-routing.module";
 import { NgReactProxyModule } from "@eswarpr/ng-react-proxy-helpers";
+import { HttpModule } from "@angular/http";
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,6 +15,7 @@ import { NgReactProxyModule } from "@eswarpr/ng-react-proxy-helpers";
     BrowserModule,
     CommonModule,
     FormsModule,
+    HttpModule,
     /* AppRoutingModule, */ NgFabricModule,
     NgReactProxyModule
   ],

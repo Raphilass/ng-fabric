@@ -9,7 +9,23 @@
           #peoplePicker
           [(ngModel)]="_selectedPeople"
         ></fabric-normal-people-picker>
-        {{ _selectedPeople | json}}
+        {{ _selectedPeople | json }}
+        <fabric-primary-button text="Clear Selection" (onClick)="_clearPeoplePicker($event)"></fabric-primary-button>
+        <div class="ms-Grid">
+          <div class="ms-Grid-row" *ngFor="let _item of (_items | async)">
+            <div class="ms-Grid-col ms-lg2" [textContent]="_item.name"></div>
+            <div class="ms-Grid-col ms-lg2" [textContent]="_item.capital"></div>
+            <div class="ms-Grid-col ms-lg1">
+              <fabric-default-button
+                [menuProps]="_item.actionMenu"
+                text="Edit"
+                [split]="true"
+                (onClick)="_onEditClick($event, _item)"
+                (itemClick)="_menuItemClick($event)"
+              ></fabric-default-button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
