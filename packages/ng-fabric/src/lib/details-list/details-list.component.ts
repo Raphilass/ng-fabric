@@ -1,65 +1,67 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { ReactComponentType, HostDataProvider } from '@eswarpr/ng-react-proxy';
-import { DetailsList, IColumn, DetailsListLayoutMode, ISelection } from 'office-ui-fabric-react';
-import { FabricComponent } from '../fabric-component';
-import { ReactComponentProp } from '@eswarpr/ng-react-proxy';
+import { Component, Input, EventEmitter, Output } from "@angular/core";
+import { ReactComponentType, HostDataProvider } from "@eswarpr/ng-react-proxy";
+import {
+  DetailsList,
+  IColumn,
+  DetailsListLayoutMode,
+  ISelection
+} from "office-ui-fabric-react";
+import { FabricComponent } from "../fabric-component";
+import { ReactComponentProp } from "@eswarpr/ng-react-proxy";
+import { IComponentEvent } from "@eswarpr/ng-react-proxy/src/component-event";
 
 @Component({
-  selector: 'fabric-details-list',
+  selector: "fabric-details-list",
   templateUrl: "./details-list.component.html",
   providers: [HostDataProvider]
 })
 @ReactComponentType(DetailsList)
 export class DetailsListComponent extends FabricComponent {
-
-  constructor() { 
-    super()
-  }
-
-  ngOnInit() {
-  }
+  @Input()
+  @ReactComponentProp()
+  items: any[];
 
   @Input()
   @ReactComponentProp()
-  items:any[]
+  columns: IColumn[];
 
   @Input()
   @ReactComponentProp()
-  columns:IColumn[]
+  setKey: string;
 
   @Input()
   @ReactComponentProp()
-  setKey:string
+  layoutMode: DetailsListLayoutMode;
 
   @Input()
   @ReactComponentProp()
-  layoutMode:DetailsListLayoutMode
+  selection: ISelection;
 
   @Input()
   @ReactComponentProp()
-  selection:ISelection
+  selectionPreservedOnEmptyClick: boolean;
 
   @Input()
   @ReactComponentProp()
-  selectionPreservedOnEmptyClick:boolean
+  ariaLabelForSelectionColumn: string;
 
   @Input()
   @ReactComponentProp()
-  ariaLabelForSelectionColumn:string
+  ariaLabelForSelectAllCheckbox: string;
+
+  @Output()
+  @ReactComponentProp({
+    name: "onItemInvoked"
+  })
+  itemInvoked: EventEmitter<IComponentEvent> = new EventEmitter();
+
+  @Output()
+  @ReactComponentProp({
+    name: "onActiveItemChanged"
+  })
+  activeItemChanged: EventEmitter<IComponentEvent> = new EventEmitter();
 
   @Input()
   @ReactComponentProp()
-  ariaLabelForSelectAllCheckbox:string
-
-  @Input()
-  @ReactComponentProp()
-  onItemInvoked = (item?: any, index?: number, ev?: Event) => void{};
-
-  @Input()
-  @ReactComponentProp()
-  onActiveItemChanged = (item?: any, index?: number, ev?: Event) => void{};
-
-  @Input()
-  @ReactComponentProp()
-  selectionMode:SelectionMode
+  selectionMode: SelectionMode;
 }

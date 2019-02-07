@@ -1,8 +1,20 @@
+<<<<<<< HEAD
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from "@angular/core";
 import { INavLinkGroup, IPersonaSharedProps, RefObject, Callout, IDropdownProps, IDropdownOption, DayOfWeek, IDatePickerStrings } from "office-ui-fabric-react";
+=======
+import { Component, OnInit, ViewChild, AfterViewInit } from "@angular/core";
+import {
+  INavLinkGroup,
+  IPersonaSharedProps,
+  IContextualMenuListProps,
+  IContextualMenuProps
+} from "office-ui-fabric-react";
+>>>>>>> 90d960a25aa053482e9b4c767868bf95ea84385b
 import { NgForm } from "@angular/forms";
+import { Http } from "@angular/http";
 import { people } from "./PickerExampleData";
 import { NormalPeoplePickerComponent } from "packages/ng-fabric/src/lib/normal-people-picker/normal-people-picker.component";
+<<<<<<< HEAD
 import { of } from "rxjs";
 import { filter } from "rxjs/operators";
 import * as React from "react";
@@ -25,12 +37,23 @@ const _datePickerStrings: IDatePickerStrings = {
   nextYearAriaLabel: 'Go to next year',
   closeButtonAriaLabel: 'Close date picker'
 };
+=======
+import { of, Observable } from "rxjs";
+import { filter, map } from "rxjs/operators";
+import { IComponentEvent } from "@eswarpr/ng-react-proxy/src/component-event";
+>>>>>>> 90d960a25aa053482e9b4c767868bf95ea84385b
 
+interface IStateRecord {
+  id: number;
+  name: string;
+  capital: string;
+}
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
+<<<<<<< HEAD
 export class AppComponent implements AfterViewInit {
 
     /**
@@ -92,6 +115,9 @@ private Teams:any = [{key:"Team1"}, {key:"Team3"}];
   private _targetElement
 
   
+=======
+export class AppComponent implements AfterViewInit, OnInit {
+>>>>>>> 90d960a25aa053482e9b4c767868bf95ea84385b
   /**
    * The list of components to present in the Nav
    * component
@@ -156,6 +182,72 @@ private Teams:any = [{key:"Team1"}, {key:"Team3"}];
     }
   ];
 
+<<<<<<< HEAD
+=======
+  /**
+   * Reference to the people picker on the page
+   */
+  @ViewChild("peoplePicker")
+  _peoplePicker: NormalPeoplePickerComponent;
+
+  _items: Observable<IStateRecord[]>;
+
+  private MENU_TEMPLATE: IContextualMenuProps = {
+    items: [
+      {
+        key: "edit",
+        text: "Edit",
+        iconProps: {
+          iconName: "Edit"
+        }
+      }
+    ]
+  };
+
+  /**
+   * Specifies the list of people selected in the people picker
+   */
+  _selectedPeople: Array<IPersonaSharedProps>;
+>>>>>>> 90d960a25aa053482e9b4c767868bf95ea84385b
+
+  _onEditClick(ev: IComponentEvent, _item: IStateRecord): void {
+    console.log(_item);
+  }
+
+  _menuItemClick(ev: IComponentEvent): void {
+    console.log(ev);
+  }
+
+  _clearPeoplePicker = () => this._selectedPeople = [];
+  
+  constructor(private http: Http) {}
+
+  ngOnInit() {
+    this._items = this.http
+      .get("http://services.groupkt.com/state/get/IND/all")
+      .pipe(
+        map(response => response.json().RestResponse.result),
+        map((results: Array<any>) =>
+          results.map(state => {
+            const _menu = Object.assign({}, this.MENU_TEMPLATE);
+            _menu.items = _menu.items.slice().map(x => {
+              const _newItem = Object.assign({}, x);
+              _newItem.data = state;
+              return _newItem;
+            });
+
+            const _record = {
+              id: state.id,
+              name: state.name,
+              capital: state.capital,
+              actionMenu: _menu
+            } as IStateRecord;
+
+            return _record;
+          })
+        )
+      );
+  }
 
   /**
    * Handles the AfterViewInit event of this component

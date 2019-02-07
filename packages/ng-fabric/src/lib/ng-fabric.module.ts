@@ -36,6 +36,8 @@ import { DatePickerComponent } from "./date-picker/date-picker.component";
 import { SliderComponent } from "./slider/slider.component";
 import { CalloutComponent } from './callout/callout.component';
 import { ToggleComponent } from './toggle/toggle.component';
+import { DetailsList } from "office-ui-fabric-react";
+import { DetailsListComponent } from "./details-list/details-list.component";
 @NgModule({
   declarations: [
     IconComponent,
@@ -67,7 +69,8 @@ import { ToggleComponent } from './toggle/toggle.component';
     BREADCRUMB_RENDERING_DIRECTIVES,
     DropdownComponent,
     CalloutComponent,
-    ToggleComponent
+    ToggleComponent,
+    DetailsListComponent
   ],
   imports: [CommonModule, NgReactProxyModule],
   exports: [
@@ -100,7 +103,8 @@ import { ToggleComponent } from './toggle/toggle.component';
     CHECKBOX_RENDERING_DIRECTIVES,
     BREADCRUMB_RENDERING_DIRECTIVES,
     CalloutComponent,
-    ToggleComponent
+    ToggleComponent,
+    DetailsListComponent
   ]
 })
 export class NgFabricModule {}
