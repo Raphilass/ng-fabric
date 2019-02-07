@@ -1,8 +1,8 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { ReactComponentType, HostDataProvider } from '../../lib/imports';
+import { ReactComponentType, HostDataProvider } from '@eswarpr/ng-react-proxy';
 import { DetailsList, IColumn, DetailsListLayoutMode, ISelection } from 'office-ui-fabric-react';
 import { FabricComponent } from '../fabric-component';
-import { ReactComponentProp } from '../../lib/imports';
+import { ReactComponentProp } from '@eswarpr/ng-react-proxy';
 
 @Component({
   selector: 'fabric-details-list',

@@ -120,13 +120,14 @@ export class DropdownComponent extends FabricInputComponent {
       _viewValue = this.options.filter(x => x.selected);
     } else {
       _viewValue = newValue;
-
-      this.onViewValueChanged(_viewValue);
-      if (this.change) {
-        this.change.emit({
-          arguments: [_viewValue]
-        });
-      }
+      this.selectedKey = newValue.key;
+    }
+    
+    this.onViewValueChanged(_viewValue);
+    if (this.change) {
+      this.change.emit({
+        arguments: [_viewValue]
+      });
     }
   };
 

@@ -34,6 +34,8 @@ import { DropdownComponent } from "./dropdown/dropdown.component";
 import { SearchboxComponent } from "./searchbox/searchbox.component";
 import { DatePickerComponent } from "./date-picker/date-picker.component";
 import { SliderComponent } from "./slider/slider.component";
+import { CalloutComponent } from './callout/callout.component';
+import { ToggleComponent } from './toggle/toggle.component';
 @NgModule({
   declarations: [
     IconComponent,
@@ -63,7 +65,9 @@ import { SliderComponent } from "./slider/slider.component";
     BUTTON_RENDERING_DIRECTIVES,
     CHECKBOX_RENDERING_DIRECTIVES,
     BREADCRUMB_RENDERING_DIRECTIVES,
-    DropdownComponent
+    DropdownComponent,
+    CalloutComponent,
+    ToggleComponent
   ],
   imports: [CommonModule, NgReactProxyModule],
   exports: [
@@ -86,7 +90,6 @@ import { SliderComponent } from "./slider/slider.component";
     CheckboxComponent,
     ChoiceGroupComponent,
     ComboBoxComponent,
-    // PanelHeaderDirective,
     DropdownComponent,
     SearchboxComponent,
     DatePickerComponent,
@@ -95,7 +98,9 @@ import { SliderComponent } from "./slider/slider.component";
     TEXTFIELD_RENDERING_DIRECTIVES,
     BUTTON_RENDERING_DIRECTIVES,
     CHECKBOX_RENDERING_DIRECTIVES,
-    BREADCRUMB_RENDERING_DIRECTIVES
+    BREADCRUMB_RENDERING_DIRECTIVES,
+    CalloutComponent,
+    ToggleComponent
   ]
 })
 export class NgFabricModule {}

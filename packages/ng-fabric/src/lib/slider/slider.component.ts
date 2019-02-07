@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ReactComponentType, ReactComponentProp, IComponentEvent } from '@eswarpr/ng-react-proxy';
+import { ReactComponentType, ReactComponentProp, IComponentEvent, HostDataProvider } from '@eswarpr/ng-react-proxy';
 import { Slider, ITheme } from 'office-ui-fabric-react';
 import { FabricInputComponent } from '../fabric-input-component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -13,15 +13,12 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       provide: NG_VALUE_ACCESSOR,
       multi: true,
       useExisting: SliderComponent
-    }
+    },
+    HostDataProvider
   ]
 })
 @ReactComponentType(Slider)
 export class SliderComponent extends FabricInputComponent {
-
-  constructor() { 
-    super()
-  }
 
   ngOnInit() {
   }
@@ -42,9 +39,11 @@ export class SliderComponent extends FabricInputComponent {
   @ReactComponentProp()
   step:number;
 
-  @Output()
-  @ReactComponentProp()
-  valueFormat:EventEmitter<string> = new EventEmitter();
+  @Input()
+  @ReactComponentProp({
+    enableExplicitChangeDetection: true
+  })
+  valueFormat:(value:number) => string;
 
   @Input()
   @ReactComponentProp()
@@ -101,7 +100,7 @@ export class SliderComponent extends FabricInputComponent {
   private onChange = (newValue:number) => {
     // call writevalue to allow for ngModel
     // updates
-    console.log(this);
+    // console.log(this);
     this.onViewValueChanged(newValue);
     if (this.change) {
       this.change.emit({
@@ -116,4 +115,13 @@ export class SliderComponent extends FabricInputComponent {
     }
     
   }
+
+  /**
+   * Initializes a new instance of the TextFieldComponent
+   */
+  constructor(private hostDataProvider: HostDataProvider) {
+    super();
+    this.hostDataProvider.setComponentHost(this);
+  }
+
 }

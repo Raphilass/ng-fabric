@@ -5,12 +5,70 @@
         <fabric-nav [groups]="_componentList"></fabric-nav>
       </div>
       <div class="ms-Grid-col ms-sm12 ms-md12 ms-lg10">
-        <fabric-normal-people-picker
-          #peoplePicker
-          [(ngModel)]="_selectedPeople"
-        ></fabric-normal-people-picker>
-        {{ _selectedPeople | json}}
+        <div>
+
+          <div>
+            <form #form="ngForm">
+                <div class="ms-Grid-col ms-sm4">
+                    <fabric-label>End Date</fabric-label>
+                    <fabric-date-picker [firstDayOfWeek]="_dayOfWeek" [strings]="_datePickerStrings" [isRequired]="true"
+                      [minDate]="_startDate" name="EndDate1" [(ngModel)]="_endDate" placeholder="select an end date..."
+                      ariaLabel="select an end date"></fabric-date-picker>
+                      {{_endDate}}
+                  </div>
+              <fabric-dropdown [options]="_teamOptions" label="Team(s)" name="Teams" [(ngModel)]="Teams" [multiSelect]="true"
+                [dropdownWidth]="400"></fabric-dropdown>
+
+              <div>
+                <fabric-toggle onText="Colleague" offText="Contractor" label="Tests will be created for Contractors or Colleagues ?" (change)="_handleToggleChange($event)" [checked]="true" 
+                  name="toggle" [(ngModel)]="_toggle" ></fabric-toggle>
+                Toggle : {{_toggle}}
+              </div>
+              <div>
+                <h3>Form</h3>
+                {{form.value | json}}
+                <h3>Model</h3>
+                {{Teams | json}}
+              </div>
+            </form>
+          </div>
+
+          <!-- <div class="width-50" #calloutButton>
+            <fabric-primary-button id="toggleCallout" (click)="_onShowMenuClicked($event)" text='Show callout' style="display: inline-block;margin-right: 15px;"></fabric-primary-button>
+          </div>
+          <div class="width-50" #calloutButton>
+            <fabric-primary-button id="toggleCallout1" (click)="_onShowMenuClicked($event)" text='Show callout' style="display: inline-block;margin-right: 15px;"></fabric-primary-button>
+          </div>
+          <div class="width-50" #calloutButton>
+            <fabric-primary-button id="toggleCallout2" (click)="_onShowMenuClicked($event)" text='Show callout' style="display: inline-block;margin-right: 15px;"></fabric-primary-button>
+          </div>
+          <div class="width-50" #calloutButton>
+            <fabric-primary-button id="toggleCallout3" (click)="_onShowMenuClicked($event)" text='Show callout' style="display: inline-block;margin-right: 15px;"></fabric-primary-button>
+          </div>
+          <fabric-callout [calloutMaxWidth]="300" ariaLabelledBy='callout-label-1' ariaDescribedBy='callout-description-1'
+            #callout role='alertdialog' [className]="ms-CalloutExample-callout" [gapSpace]="0"
+            (onDismiss)='_onCalloutDismiss()' [setInitialFocus]='true' [hidden]='!isCalloutVisible' [isBeakVisible]="true">
+            <div class="ms-CalloutExample-header">
+              <p class="ms-CalloutExample-title" id='callout-label-1'>
+                {{_calloutDetails.Title}}
+              </p>
+            </div>
+            <div class="ms-CalloutExample-inner">
+              <div class="ms-CalloutExample-content">
+                <p class="ms-CalloutExample-subText" id='callout-description-1'>
+                  {{_calloutDetails.Description}}
+                </p>
+              </div>
+              <div class="ms-CalloutExample-actions">
+                <a class="ms-CalloutExample-link" href="http://microsoft.com">
+                  Go to microsoft
+                </a>
+              </div>
+            </div>
+          </fabric-callout>
+
+        </div> -->
+
+        </div>
       </div>
     </div>
-  </div>
-</div>

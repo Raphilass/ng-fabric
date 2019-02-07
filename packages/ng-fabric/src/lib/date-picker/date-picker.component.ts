@@ -187,8 +187,8 @@ export class DatePickerComponent extends FabricInputComponent {
   private onSelectDate = (newValue: React.FormEvent<Date>) => {
     // call writevalue to allow for ngModel
     // updates
-    // this.writeValue(newValue);
-    this.onModelValueChanged(newValue);
+    this.writeValue(newValue);
+    this.onViewValueChanged(newValue);
     if (this.change) {
       this.change.emit({
         arguments: [newValue]
